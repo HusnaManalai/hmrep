@@ -2,7 +2,7 @@ function generateStars() {
   const starsContainer = document.getElementById("stars-container");
   if (!starsContainer) return; // Ensure the container exists
 
-  const numStars = 30; // Adjust for more/less density
+  const numStars = 40; // Adjust for more/less density
 
   for (let i = 0; i < numStars; i++) {
       let star = document.createElement("div");

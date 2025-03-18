@@ -568,7 +568,7 @@ a {
   border-radius: 8px;
   max-width: 1200px;
   margin: 0 auto;         /* Center the container */
-  column-count: 4;        /* Number of columns on large screens */
+  column-count: 5;        /* Number of columns on large screens */
   column-gap: 1rem;       /* Space between columns */
 }
 
