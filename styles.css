@@ -197,12 +197,12 @@ a {
 
 .hero-image {
   position: relative;
-  width: 50%;
+  width: 60%;
   max-width: 600px;
-  border-radius: 40%;
+  border-radius: 20%;
   box-shadow: 0 0 0 2px rgb(88, 254, 188);
-  padding: 20px;
-  animation: moveRandomly 25s infinite alternate ease-in-out;
+  padding: 2px;
+  animation: moveRandomly 50s infinite alternate ease-in-out;
 }
 
 @keyframes moveRandomly {
@@ -544,6 +544,10 @@ a {
 .art {
   text-align: center;     /* Center headings & text */
   padding: 2rem;          /* Spacing around the section */
+}
+
+.art-description{
+    margin-bottom: 30px;
 }
 
 /* Masonry container: white background, centered, multiple columns */

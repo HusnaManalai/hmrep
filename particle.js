@@ -26,3 +26,5 @@ function generateStars() {
 
 // Call function immediately after DOM loads
 document.addEventListener("DOMContentLoaded", generateStars);
+
+
