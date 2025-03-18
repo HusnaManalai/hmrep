@@ -139,21 +139,7 @@ document.getElementById("stop-timer").addEventListener("click", function () {
         scrub: true,
       },
     });
-  
-    // Scroll Animation for Projects Section
-    gsap.from(".workspace", {
-      opacity: 0,
-      scale: 1.0,
-      duration: 1.5,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: ".workspace",
-        start: "top 80%",
-        toggleActions: "play none none reverse",
-      },
-    });
 
-  
   });
   
  
