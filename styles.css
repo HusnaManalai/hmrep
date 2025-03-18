@@ -6,16 +6,63 @@
   margin: 0;
   box-sizing: border-box;
 }
-
-html, body {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  font-family: 'Poppins', sans-serif;
-  background: rgb(9, 15, 38);
-  color: rgb(88, 254, 188);
-  scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+body {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+    background: rgb(9, 15, 38);
+    color: rgb(88, 254, 188);
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
 }
+
+h2 {
+    font-size: 2rem; /* Set your desired size */
+    font-weight: 700; /* Ensures all headings have the same weight */
+    color: rgb(88, 254, 188); /* Keeps color consistent */
+    text-transform: uppercase; /* Optional: Makes headings all caps */
+    margin-bottom: 1rem; /* Adds uniform spacing */
+  }
+  
+
+/* -----------------------------------
+   STAR STYLING (BACKGROUND PARTICLES)
+----------------------------------- */
+#stars-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw; /* Ensure full width */
+    height: 100vh; /* Ensure full height */
+    z-index: -10; /* Keep it behind other content */
+    pointer-events: none; /* Prevent interactions */
+    
+}
+
+  
+  .star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: rgb(88, 254, 188);
+    border-radius: 50%;
+    animation: blink infinite ease-in-out;
+    animation-duration: 4s;
+  }
+  
+  
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
 
 /* -----------------------------------
    NAVBAR
@@ -29,7 +76,7 @@ html, body {
 a {
     text-decoration: none; /* Removes underlines from all links */
   }
-.logo {
+.logo a {
   text-decoration: none;
   color: rgb(88, 254, 188);
   font-size: 2rem;
@@ -144,7 +191,7 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: 3.5rem;
   margin-top: 0rem;
 }
 
@@ -155,7 +202,7 @@ a {
   border-radius: 40%;
   box-shadow: 0 0 0 2px rgb(88, 254, 188);
   padding: 20px;
-  animation: moveRandomly 15s infinite alternate ease-in-out;
+  animation: moveRandomly 25s infinite alternate ease-in-out;
 }
 
 @keyframes moveRandomly {
@@ -193,44 +240,6 @@ a {
   }
 }
 
-/* -----------------------------------
-   STAR STYLING (BACKGROUND PARTICLES)
------------------------------------ */
-#stars-container {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  overflow: hidden;
-}
-
-.star {
-  position: absolute;
-  background: radial-gradient(
-    circle,
-    rgb(255, 255, 255) 1.9%,
-    rgba(255, 163, 163, 0.5) 50%,
-    rgba(252, 87, 255, 0.5) 70%,
-    rgba(255, 130, 130, 0) 100%
-  );
-  border-radius: 50%;
-  animation: blink infinite ease-in-out;
-  animation-duration: 2s;
-}
-
-@keyframes blink {
-  0%,
-  100% {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
 
 /* -----------------------------------
    FOOTER STYLING
@@ -253,28 +262,6 @@ a {
   opacity: 1;
   color: hsl(334, 100%, 69%);
   transition: color 0.3s ease, opacity 0.6s ease;
-}
-
-/* -----------------------------------
-   VERTICAL LINES STYLING
------------------------------------ */
-.vertical-lines {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  position: absolute;
-  top: 200px;
-  left: 0;
-  width: 100%;
-  height: calc(100vh - 200px);
-  pointer-events: none;
-  padding: 0 10vw;
-}
-
-.vertical-line {
-  width: 1px;
-  height: 100vh;
-  background-color: rgb(88, 254, 188);
 }
 
 /* -----------------------------------
@@ -349,7 +336,9 @@ a {
    ABOUT SECTION
 ----------------------------------- */
 .about-section {
-  padding: 0.1rem 0rem;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  padding: 0.1rem 1rem;
   text-align: center;
   color: rgb(88, 254, 188);
 }
@@ -385,6 +374,10 @@ a {
   line-height: 1.5;
 }
 
+.highlight-link{
+    color: rgb(94, 236, 255);
+}
+
 /* -----------------------------------
    GAMES MENU SECTION (OPTIONAL)
 ----------------------------------- */
@@ -415,21 +408,20 @@ a {
   padding: 5rem;
   max-width: 900px;
   color: rgb(88, 254, 188);
-  border-radius: 10%;
+  border-radius: 15%;
   border: 2px solid rgb(88, 254, 188);
   text-align: center;
-  margin: 0 auto;
+  margin-top: 80px;
 }
 
 .workspace h2 {
   text-align: center;
-  margin-bottom: 0rem;
+  margin-top: 0rem;
 }
 
 .wd {
   font-size: 1.2rem;
   max-width: 600px;
-  margin-top: 0.1rem;
   margin-bottom: 1.5rem;
 }
 

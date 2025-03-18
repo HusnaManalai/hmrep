@@ -1,36 +1,28 @@
-function createStar() {
-  const star = document.createElement("div");
-  star.classList.add("star");
+function generateStars() {
+  const starsContainer = document.getElementById("stars-container");
+  if (!starsContainer) return; // Ensure the container exists
 
-  // Random position
-  const x = Math.random() * 100;
-  const y = Math.random() * 100;
+  const numStars = 15; // Adjust for more/less density
 
-  // Random size
-  const size = Math.random() * 3 + 1;
+  for (let i = 0; i < numStars; i++) {
+      let star = document.createElement("div");
+      star.classList.add("star");
+      
+      // Random positions
+      star.style.top = Math.random() * 100 + "vh";
+      star.style.left = Math.random() * 100 + "vw";
 
-  // Apply styles
-  star.style.left = `${x}vw`;
-  star.style.top = `${y}vh`;
-  star.style.width = `${size}px`;
-  star.style.height = `${size}px`;
+      // Random size (for variety)
+      let size = Math.random() * 2 + 1;
+      star.style.width = size + "px";
+      star.style.height = size + "px";
 
+      // Random animation delay to stagger blinking effect
+      star.style.animationDelay = Math.random() * 4 + "s";
 
-  // Add animation
-  star.style.animationDuration = `${Math.random() * 2 + 2}s`;
-  star.style.animationDelay = `${Math.random() * 1}s`;
-
-  // Add to the container instead of body
-  document.getElementById("stars-container").appendChild(star);
-}
-
-// Generate stars
-function generateStars(count) {
-  for (let i = 0; i < count; i++) {
-    createStar();
+      starsContainer.appendChild(star);
   }
 }
 
-// Call the function to generate stars
-generateStars(10);
-
+// Call function immediately after DOM loads
+document.addEventListener("DOMContentLoaded", generateStars);
