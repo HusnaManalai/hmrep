@@ -20,30 +20,47 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_ID }}
           aws-region: us-east-2
 
-      - name: Sync files to S3
-        run: |
-          aws s3 sync . s3://husnamanalai.com --delete --region us-east-2
-
       - name: Create Amplify Deployment
-        id: amplify-deploy
+        id: create-deployment
         run: |
-          
-          echo "Now capturing DEPLOYMENT_ID..."
-          DEPLOYMENT_ID=$(aws amplify create-deployment \
+          echo "Creating Amplify deployment..."
+          DEPLOYMENT_INFO=$(aws amplify create-deployment \
             --region us-east-2 \
             --app-id d2fc5rd97478n5 \
             --branch-name staging \
-            --query 'jobSummary.jobId' \
-            --output text)
-          
-          echo "DEPLOYMENT_ID=$DEPLOYMENT_ID"
-          echo "DEPLOYMENT_ID=$DEPLOYMENT_ID" >> $GITHUB_ENV
+            --output json)
 
+          echo "DEPLOYMENT_INFO=$DEPLOYMENT_INFO"
+          JOB_ID=$(echo "$DEPLOYMENT_INFO" | jq -r '.jobId')
+          UPLOAD_URL=$(echo "$DEPLOYMENT_INFO" | jq -r '.uploadUrl')
+
+          # Expose these as environment variables for later steps
+          echo "JOB_ID=$JOB_ID" >> $GITHUB_ENV
+          echo "UPLOAD_URL=$UPLOAD_URL" >> $GITHUB_ENV
+
+      # --------------------------------------------------
+      # 3. Prepare the artifact to upload to Amplify
+      # --------------------------------------------------
+      - name: Zip build files
+        # Adjust this command to only zip what you need to deploy (e.g., build folder)
+        run: zip -r deployment.zip .
+
+      # --------------------------------------------------
+      # 4. Upload artifact to Amplify’s pre-signed URL
+      # --------------------------------------------------
+      - name: Upload to Amplify
+        run: |
+          echo "Uploading artifact to Amplify..."
+          curl -T deployment.zip "${{ env.UPLOAD_URL }}"
+
+      # --------------------------------------------------
+      # 5. Start the actual Amplify deployment
+      # --------------------------------------------------
       - name: Start Amplify Deployment
         run: |
-          echo "Starting deployment with DEPLOYMENT_ID=${{ env.DEPLOYMENT_ID }}"
+          echo "Starting Amplify deployment with JOB_ID=${{ env.JOB_ID }}"
           aws amplify start-deployment \
             --region us-east-2 \
             --app-id d2fc5rd97478n5 \
             --branch-name staging \
-            --job-id ${{ env.DEPLOYMENT_ID }}
+            --job-id "${{ env.JOB_ID }}"
