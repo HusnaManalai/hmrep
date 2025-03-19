@@ -18,12 +18,53 @@
     </nav>
   </header>
 
-   <!-- Link the external JavaScript file -->
-   <script src="particle.js"></script>
+  <!-- Games Sections <!-- Game 1: Memory Match -->
+<section class="game-section" id="game-1">
+  <!-- Home Screen -->
+  <div id="home-screen" class="screen">
+    <h2>Memory Match (Trio Finder)</h2>
+    <p>Find all matching trios and complete all levels before time runs out!</p>
+    <button id="single-player-btn">Single Player</button>
+    <button id="multiplayer-btn">Multiplayer</button>
+  </div>
+
+  <!-- Game Screen -->
+  <div id="game-screen" class="screen hidden">
+    <h2>Level <span id="level">1</span></h2>
+    <p id="timer">Time Left: <span id="time-left">60</span> sec</p>
+    <button id="back-home-btn">🏠 Back to Home</button>
+    <div class="game-board" id="game-board"></div>
+    <p id="score-display">Score: <span id="score">0</span></p>
+    <p id="multiplayer-score" class="hidden">
+      Player 1: <span id="player1-score">0</span> | Player 2: <span id="player2-score">0</span>
+    </p>
+  </div>
+
+  <!-- Win/Lose Screen -->
+  <div id="win-screen" class="screen hidden">
+    <h2 id="win-message">🎉 Yay! You Win! 🎉</h2>
+    <button id="home-btn">🏠 Home</button>
+    <button id="next-level-btn">🔼 Next Level</button>
+  </div>
+</section>
+
+
+    <!-- Game 2 -->
+    <section class="game-section" id="game-2">
+      <h2>Game 2</h2>
+      <p>Description or space for the second game.</p>
+    </section>
+
+    <!-- Game 3 -->
+    <section class="game-section" id="game-3">
+      <h2>Game 3</h2>
+      <p>Description or space for the third game.</p>
+    </section>
+
+  </main>
+
+  <!-- Link the external JavaScript file -->
+  <script src="particle.js"></script>
+  <script src="games.js"></script>
 </body>
 </html>
-
-
-
-
-

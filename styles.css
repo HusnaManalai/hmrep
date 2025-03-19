@@ -569,7 +569,7 @@ a {
   border-radius: 8px;
   max-width: 1200px;
   margin: 0 auto;         /* Center the container */
-  column-count: 5;        /* Number of columns on large screens */
+  column-count: 4;        /* Number of columns on large screens */
   column-gap: 1rem;       /* Space between columns */
 }
 
@@ -598,6 +598,85 @@ a {
   }
 }
 
+
+
 /* -----------------------------------
-   END OF FILE
+   GAMES SECTION (MASONRY LAYOUT)
 ----------------------------------- */
+/* Game Section */
+.game-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  /* Screen Display */
+  .screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    width: 100vw;
+    text-align: center;
+  }
+  
+  .hidden {
+    display: none; /* Hide inactive screens */
+  }
+  
+  /* Game Board - Adjusts dynamically */
+.game-board {
+    display: grid;
+    gap: 10px;
+    width: 90%;
+    max-width: 600px;
+    height: auto;
+    margin: 20px auto;
+    padding: 1rem;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Cards - Ensure they are visible */
+  .card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(59, 168, 143);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Ensure flipped cards show content */
+  .card.flipped {
+    background-color: #ffcc00;
+    transform: rotateY(180deg);
+  }
+  
+  
+  /* Buttons */
+  button {
+    background: rgb(59, 168, 143);
+    color: white;
+    padding: 10px 15px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  
+  button:hover {
+    background: #45a089;
+  }
+  
