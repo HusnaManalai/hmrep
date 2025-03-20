@@ -1,4 +1,3 @@
-
 /* -----------------------------------
    GAMES SECTION (MASONRY LAYOUT)
 ----------------------------------- */
@@ -8,106 +7,108 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    min-height: 70vh;
     text-align: center;
-    overflow: hidden;
-}
-
-/* Game Screen - Two Sections: Board on Left, Info on Right */
-.game-screen {
-    display: flex;
-    flex-direction: column;  /* Arrange elements horizontally */
-    justify-content: center;
-    align-items: center;
+    margin-top: 200px;
+    background-color: antiquewhite;
+    padding: 20px;
+  }
+  
+  /* Game Screen */
+  .game-screen {
     width: 100%;
-    gap: 3rem; /* Space between game board and info panel */
-}
-
-/* Hide inactive screens */
-.hidden {
+  }
+  
+  /* Game Container: Board and Info side by side */
+  .game-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    width: 100%;
+  }
+  
+  /* Hide inactive screens */
+  .hidden {
     display: none;
-}
-
-/* Game Board - Centered */
-.game-board {
+  }
+  
+  /* Game Board - Centered */
+  .game-board {
     display: grid;
     gap: 10px;
     max-width: 600px;
-    height: auto;
-    padding: 4rem;
+    padding: 5rem;
     background-color: #f4f4f4;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(255, 155, 155, 0.1);
-}
-
-/* Cards */
-.card {
+    box-shadow: 0 4px 10px rgba(0, 255, 183, 0.5);
+    /* Let JS or CSS determine the number of columns */
+    /* Example: repeat(auto-fit, minmax(80px, 1fr)); */
+  }
+  
+  /* Cards - Responsive using aspect-ratio */
+  .card {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: bold;
     color: white;
     background-color: rgb(59, 168, 143);
     border-radius: 8px;
     cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-/* Flipped cards */
-.card.flipped {
+    transition: transform 0.9s ease;
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Makes the card a square that scales with the grid cell */
+  }
+  
+  /* Flipped cards */
+  .card.flipped {
     background-color: #ffcc00;
     transform: rotateY(180deg);
-}
-
-/* -----------------------------------
-   RIGHT PANEL: LEVEL, TIMER, SCORE
------------------------------------ */
-
-
-
-.game-info {
-    display: list-item;
+  }
+  
+  /* -----------------------------------
+     RIGHT PANEL: LEVEL, TIMER, SCORE
+  ----------------------------------- */
+  .game-info {
+    display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 300px; /* Fixed width */
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 300px;
     min-height: 250px;
     padding: 1rem;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: left; /* Align text to the left */
-}
-
-/* Level Number */
-.game-info h2 {
+    text-align: left;
+  }
+  
+  /* Level Number */
+  .game-info h2 {
     font-size: 2rem;
     margin-bottom: 10px;
     color: rgb(59, 168, 143);
-}
-
-/* Timer */
-#timer {
+  }
+  
+  /* Timer */
+  #timer {
     font-size: 1.2rem;
     font-weight: bold;
-    color: rgb(255, 255, 255);
     margin-bottom: 15px;
-}
-
-/* Score Display */
-#score-display {
+    color: black;
+  }
+  
+  /* Score Displays */
+  #score-display,
+  #multiplayer-score {
     font-size: 1.2rem;
     margin-bottom: 10px;
-}
-
-/* Multiplayer Score */
-#multiplayer-score {
-    font-size: 1.2rem;
-    color: rgb(59, 168, 143);
-}
-
-/* Buttons */
-button {
+  }
+  
+  /* Buttons */
+  button {
     background: rgb(59, 168, 143);
     color: white;
     padding: 10px 15px;
@@ -115,9 +116,10 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: 0.3s ease;
-}
-
-button:hover {
+    transition: background 0.3s ease;
+  }
+  
+  button:hover {
     background: #45a089;
-}
+  }
+  
