@@ -1,7 +1,6 @@
 /* -----------------------------------
    GAMES SECTION (MASONRY LAYOUT)
 ----------------------------------- */
-/* Game Section */
 .game-section {
     display: flex;
     flex-direction: column;
@@ -9,10 +8,13 @@
     justify-content: center;
     min-height: 70vh;
     text-align: center;
-    margin-top: 200px;
+    margin: 200px auto 0; /* top margin 200px, auto left/right */
+    width: 80%;         /* use a percentage width for responsiveness */
+    max-width: 800px;   /* optional: limit how wide it can grow */
     background-color: antiquewhite;
     padding: 20px;
   }
+  
   
   /* Game Screen */
   .game-screen {
