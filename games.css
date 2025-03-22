@@ -1,5 +1,6 @@
 /* GAMES SECTION (MASONRY LAYOUT) */
 .game-section1 {
+    
     background-image: url('images/22e.png');
     background-size: 99% 99%;
     background-position: center;
@@ -14,14 +15,18 @@
     width: 90%;
     max-width: 900px;
     padding: 10px;
-    border: 4px solid rgb(189, 108, 2);
+    color : white;
+
+  }
+
+  .game-section1 h2{
+    color: white;
   }
   
   /* Game Screen */
   .game-screen {
     width: 100%;
   }
-  
   /* Game Container: Centered and sized to fit its content */
   .game-container {
     display: flex;
@@ -56,7 +61,6 @@
     font-size: 2rem;  /* Fallback font size */
     font-weight: bold;
     color: white;
-    background-color: rgb(59, 168, 143);
     border-radius: 8px;
     cursor: pointer;
     transition: transform 0.3s ease;
@@ -91,7 +95,7 @@
   .game-info h2 {
     font-size: 2rem;
     margin-bottom: 5px;
-    color: rgb(255, 124, 124);
+    color: rgb(255, 255, 255);
   }
   
   /* Timer */
@@ -99,7 +103,7 @@
     font-size: 1.2rem;
     font-weight: bold;
     margin-bottom: 15px;
-    color: rgb(134, 61, 115);
+    color: rgb(255, 77, 208);
   }
   
   /* Score Displays */
