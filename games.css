@@ -1,6 +1,4 @@
-/* -----------------------------------
-   GAMES SECTION (MASONRY LAYOUT)
------------------------------------ */
+/* GAMES SECTION (MASONRY LAYOUT) */
 .game-section1 {
     background-image: url('images/22e.png');
     background-size: 99% 99%;
@@ -12,27 +10,27 @@
     justify-content: center;
     min-height: 70vh;
     text-align: center;
-    margin: 100px auto 0;   /* Reduced top margin */
-    width: 90%;             /* Increased overall width percentage for responsiveness */
-    max-width: 900px;       /* Reduced max width */
-    padding: 10px;          /* Reduced padding */
+    margin: 100px auto 0;
+    width: 90%;
+    max-width: 900px;
+    padding: 10px;
     border: 4px solid rgb(189, 108, 2);
   }
-  
   
   /* Game Screen */
   .game-screen {
     width: 100%;
   }
   
-  /* Game Container: Board and Info side by side */
+  /* Game Container: Centered and sized to fit its content */
   .game-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 1rem;   /* Reduced gap */
-    width: 100%;
+    gap: 1rem;
+    /* Remove full width so container shrinks to its content */
+    width: auto;
   }
   
   /* Hide inactive screens */
@@ -40,24 +38,22 @@
     display: none;
   }
   
-  /* Game Board - Centered */
+  /* Game Board - Smaller and centered */
   .game-board {
     display: grid;
     gap: 10px;
-    max-width: 600px;
-    padding: 5rem;
+    max-width: 400px;  /* Reduced size */
+    padding: 2rem;     /* Reduced padding */
     background-color: rgb(25, 22, 22);
     border-radius: 10px;
-    /* Let JS or CSS determine the number of columns */
-    /* Example: repeat(auto-fit, minmax(80px, 1fr)); */
   }
   
-/* Cards - Responsive using aspect-ratio */
-.card {
+  /* Cards - Responsive using aspect-ratio */
+  .card {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2rem;  /* fallback in case images fail to load */
+    font-size: 2rem;  /* Fallback font size */
     font-weight: bold;
     color: white;
     background-color: rgb(59, 168, 143);
@@ -65,7 +61,7 @@
     cursor: pointer;
     transition: transform 0.3s ease;
     width: 100%;
-    aspect-ratio: 1 / 1;  /* square cards */
+    aspect-ratio: 1 / 1;
     overflow: hidden;
   }
   
@@ -75,24 +71,20 @@
     object-fit: cover;
   }
   
-  /* Flipped cards can have a slight animation */
   .card.flipped {
     transform: rotateY(180deg);
   }
   
-  /* -----------------------------------
-     RIGHT PANEL: LEVEL, TIMER, SCORE
-  ----------------------------------- */
+  /* Game Info Panel - Smaller and centered */
   .game-info {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    width: 330px;
-    min-height: 9px;
+    justify-content: center;
+    align-items: center;  /* Center inner content */
+    width: 250px;         /* Reduced width */
     padding: 1rem;
     border-radius: 10px;
-    text-align: left;
+    text-align: center;   /* Center text inside */
   }
   
   /* Level Number */
@@ -115,7 +107,7 @@
   #multiplayer-score {
     font-size: 1.2rem;
     margin-bottom: 10px;
-    padding: 3rem;
+    padding: 1rem;  /* Adjusted padding for a smaller look */
   }
   
   /* Buttons */
@@ -129,38 +121,14 @@
     cursor: pointer;
     transition: background 0.3s ease;
   }
-
-
   
   button:hover {
     background: #358773;
   }
-
+  
   .button-container {
     display: flex;
-    gap: 10px; /* Adjust spacing between buttons */
-    justify-content: center; /* Optional: center the buttons */
-  }
-  
-  
-
-
-
-  /*--------------------------
-
-  --------------------------*/
-
-  .game-section2 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    gap: 10px;
     justify-content: center;
-    min-height: 70vh;
-    text-align: center;
-    margin: 200px auto 0; /* top margin 200px, auto left/right */
-    width: 80%;         /* use a percentage width for responsiveness */
-    max-width: 1000px;   /* optional: limit how wide it can grow */
-    background-color: antiquewhite;
-    padding: 20px;
-    border: 4px solid goldenrod;
   }
+  
