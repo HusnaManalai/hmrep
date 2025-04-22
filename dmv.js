@@ -27,6 +27,7 @@ function generatePuzzle() {
     const a = Math.floor(Math.random() * 30 + 1);
     const b = Math.floor(Math.random() * 30 + 1);
     const c = Math.floor(Math.random() * 20 + 1);
+    //cosnt c = math.floor(math.r
     question = `Solve: (${a}² + ${b}² - ${c}) ÷ ${c}`;
     answer = (a * a + b * b - c) / c;
   }
@@ -67,11 +68,16 @@ function checkPuzzle() {
   
     if (validTickets.includes(ticketInput)) {
       const zip = Math.floor(10000 + Math.random() * 89999); // 5-digit random ZIP
+      const mon = Math.floor(1 + Math.random() * 40)
       result.innerHTML = "";
       let i = 0;
       const zipStr = `Write this ZIP code on your ticket: ${zip}`;
+      const monStr = `This is the money you owe the DMV please Pay to Maggie: $ ${mon}`;
+
       const interval = setInterval(() => {
-        result.innerHTML += zipStr.charAt(i);
+        result.innerHTML += zipStr.charAt(i); 
+
+        //the money 
         i++;
         if (i === zipStr.length) clearInterval(interval);
       }, 40); // Typing effect
