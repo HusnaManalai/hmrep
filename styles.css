@@ -62,7 +62,6 @@ body {
 	 HEADINGS
 	----------------------------------- */
 	h2 {
-		font-size: 3rem;
 		font-weight: 700;
 		text-transform: uppercase;
 		margin-bottom: 1rem;
@@ -81,7 +80,7 @@ body {
 	
 	.logo a {
 		color: rgb(255,255,255);
-		font-size: 3rem;
+		font-size: 2rem;
 		font-weight: bold;
 		transition: color 0.3s ease, transform 0.3s ease;
 	}

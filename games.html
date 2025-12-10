@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Games Menu</title>
+  <title>Games</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="games.css">
 </head>
@@ -12,12 +12,7 @@
 <body>
   <!-- Navbar -->
   <header class="navbar">
-    <h1 class="logo"><a href="index.html">HUSNA MANALAI ⊹</a></h1>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="index.html">BACK TO MAIN PAGE</a></li>
-      </ul>
-    </nav>
+    <h1 class="logo"><a href="index.html">HUSNA MANALAI</a></h1>
   </header>
 
   <!-- Games Section-->
@@ -26,10 +21,9 @@
   
     <!-- Home Screen -->
     <div id="home-screen" class="screen">
-      <h2>Memory Match (Trio Finder)</h2>
-      <p>Find all matching trios and complete all levels before time runs out!</p>
+      <h2>Tri-Catch</h2>
+      <p>Find 3 matching cards to win</p>
       <button id="single-player-btn">Single Player</button>
-      <button id="multiplayer-btn">Multiplayer</button>
       <!-- Music toggle button -->
       <button id="music-toggle-btn">Music On</button>
     </div>
@@ -42,19 +36,12 @@
         <!-- Game Info Panel (RIGHT) -->
         <div class="game-info" id="game-info">
           <h2>Level <span id="level">1</span></h2>
-          <p id="timer">⏳ Time Left: <span id="time-left">60</span></p>
+          <p id="timer">Time Left: <span id="time-left">60</span></p>
           <!-- Single-player score container -->
           <div id="score-display">
-            <p>🏆 Score: <span id="score">0</span></p>
+            <p>Score: <span id="score">0</span></p>
           </div>
-          <!-- Multiplayer score container -->
-          <div id="multiplayer-score">
-            <p>
-              <span id="player1-name">Player 1:</span> <span id="player1-score">0</span>
-              <span id="player2-name">Player 2:</span> <span id="player2-score">0</span>
-            </p>
-          </div>
-          <button id="home-btn">🏠 Back to Home</button>
+          <button id="home-btn">Back to Home</button>
         </div>
       </div>
     </div>
@@ -62,23 +49,19 @@
     <div id="win-screen" class="screen hidden">
       <h2 id="win-message"></h2>
       <div class="button-container">
-        <button id="home-btn">Home</button>
+        <button id="lose-back-home-btn">Home</button>
         <button id="next-level-btn">Next Level</button>
       </div>
 
     </div>
 
 
-
-
     <!-- Lose Screen -->
     <div id="lose-screen" class="screen hidden">
-      <h2 id="win-message">⏳ Time's Up! You Failed!</h2>
-      <button id="lose-back-home-btn">🏠 Home</button>
-
-
-
-
+      <h2 id="lose-message">Failure</h2>
+      <div class="button-container">
+        <button id="lose-back-home-btn">Home</button>
+      </div>
     </div>
 
   </section>
