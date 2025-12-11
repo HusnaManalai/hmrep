@@ -5,7 +5,7 @@ body {
     height: 100vh;
     background-color: #1d3030;
     user-select: none; 
-    font-family: "Cinzel", serif;
+    font-family: "Fira Code", "Flate", monospace;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
