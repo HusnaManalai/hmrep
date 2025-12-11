@@ -118,8 +118,7 @@ body {
 .menu {
 	font-size: 1.5rem;
 	display: flex;
-	
-			flex-direction: column;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	gap: 2rem;
@@ -188,8 +187,6 @@ body {
 	opacity: 0.8;
 	font-family: 'Poppins', sans-serif;
 }
-
-
 
 
 	/* -----------------------------------

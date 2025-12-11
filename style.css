@@ -3,7 +3,7 @@ body {
     margin: 0;
     width: 100vw;
     height: 100vh;
-    background-color: #eee;
+    background-color: #1d3030;
     user-select: none; 
     font-family: "Cinzel", serif;
     font-optical-sizing: auto;
@@ -28,21 +28,21 @@ body {
 }
 /* ----------- Header Styles ------------ */
 .title {
-    color: #000000;
+    color: #FFFAF0;
     margin: auto 20px;
     text-align: center;
 }
 
 .subtitle {
     grid-area: subtitle;
-    color: #000000;
+    color: #FFFAF0;
     margin: auto;
     text-align: center;
 }
 
 #congrats {
     grid-area: congrats;
-    color: #4fc955;    
+    color: #FFFAF0;    
     visibility: hidden;
     text-align: center;
 }
@@ -70,7 +70,7 @@ body {
 /* Colors of card symbols */
 .color-0 { color: #DC143C; }
 .color-1 { color: #00008B; }
-.color-2 { color: #2E8B57; }
+.color-2 { color: #008000; }
 .color-3 { color: #FFD700; }
 
 .card {
@@ -122,7 +122,7 @@ body {
 .card-inner {
     z-index: 2;
     border-radius: inherit;
-    background: #eee;
+    background: ##FFFAF0;
 
     padding: 1em;
 
@@ -147,14 +147,13 @@ body {
 
 /* ----------- Sidebar Styles -------------- */
 #found {
+    color: #FFFAF0;
     grid-area: quads;
     border-left: 2px solid #ccc;
-
     padding: 10px 20px 0 20px;
     display: flex;
     flex-direction: column;
     min-width: 15em;
-
     contain: content;
 }
 
@@ -167,7 +166,6 @@ body {
 
 }
 .toptext {
-    color: #c100cf;
     margin: 10px;
     overflow: hidden;
     /* The other contains are probably not important.
