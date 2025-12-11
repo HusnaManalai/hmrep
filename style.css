@@ -68,10 +68,10 @@ body {
     contain: content;
 }
 /* Colors of card symbols */
-.color-0 { color: #da5f8e; }
-.color-1 { color: #9f5cc6; }
-.color-2 { color: #56cb5c; }
-.color-3 { color: #dfdd3f; }
+.color-0 { color: #DC143C; }
+.color-1 { color: #00008B; }
+.color-2 { color: #2E8B57; }
+.color-3 { color: ##FFD700; }
 
 .card {
 
