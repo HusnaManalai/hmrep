@@ -200,14 +200,14 @@ body {
     --transition-time: 0.07s;
     --border-time: 0s;
     --scale: 0.35em;
-    background-color: ##FFFAF0 ;
+    background: #FFFAF0;
 }
 
 #buttons {
     grid-area: buttons;
 }
 .finished #timer {
-    color: ##FFFAF0;
+    color: #FFFAF0;
 }
 
 /* ----------- Animations -------------- */
