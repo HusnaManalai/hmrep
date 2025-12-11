@@ -4,7 +4,6 @@ body {
     width: 100vw;
     height: 100vh;
     background-color: #1d3030;
-    color: #FFFAF0;
     user-select: none; 
     font-family: "Cinzel", serif;
     font-optical-sizing: auto;
@@ -12,6 +11,7 @@ body {
     font-style: normal;
 }
 .container {
+    color: #FFFAF0;
     margin: 0;
     height: 100vh;
     width: 100vw;
@@ -200,16 +200,14 @@ body {
     --transition-time: 0.07s;
     --border-time: 0s;
     --scale: 0.35em;
-
-    border-radius: 4px;
-    border: 1px solid #ddd;
+    background-color: ##FFFAF0 ;
 }
 
 #buttons {
     grid-area: buttons;
 }
 .finished #timer {
-    color: #000000;
+    color: ##FFFAF0;
 }
 
 /* ----------- Animations -------------- */
