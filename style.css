@@ -19,7 +19,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(1);
-  transform-origin: center;
+    transform-origin: center;
     width: 1100px;
     height: 820px;
 
@@ -32,6 +32,7 @@ body {
     "title"    2em
     "subtitle" 2em
     "found"    2em
+    "time"    2em
     "congrats" 3em
     "cards"    2fr
     "quads"    1fr     /* reserved space for found quads */
@@ -53,12 +54,17 @@ body {
 
 #congrats {
     grid-area: congrats;
-  color: #FFFAF0;
+    color: #FFFAF0;
     visibility: hidden;
     text-align: center;
 }
 .finished #congrats {
     visibility: visible;
+}
+
+.time {
+    grid-area: time;
+    text-align: center;
 }
 
 /* ----------- Card Layout Styles -------------- */
@@ -75,17 +81,17 @@ body {
     justify-items: center;
 }
 /* Colors of card symbols */
-.color-0 { color: #e31b40; } /* pink */
-.color-1 { color: #1269e6; } /* blue */
-.color-2 { color: #22bf66; } /* green */
-.color-3 { color: #FFC72C; } /* yellow */
+.color-0 { color: #f72585; } /* pink */
+.color-1 { color: #118ab2; } /* blue */
+.color-2 { color: #5fad56; } /* green */
+.color-3 { color: #ffbe0b; } /* yellow */
 
 .card {
     margin: 0.1em;
     padding: 0;
     height: 160px;
     width: 250px;
-position: relative;
+    position: relative;
     --gold-rad: 0.6vh;
     --hover-scale: 1.025;
     --transition-time: 0.15s;
@@ -95,8 +101,9 @@ position: relative;
     border-radius: 12px;
     box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.25);
     contain: strict;
-    background: radial-gradient(ellipse farthest-corner at right top, #feed9b 0%, #fedc98 8%, #efcc93 30%, #d4c697 40%, transparent 80%),
-    radial-gradient(ellipse farthest-corner at left bottom, #ffffd5 0%, #ffffac 8%, #e8d9b1 25%, #deb49f 62.5%, #beb49f 100%);
+    background:#ffbe0b;
+    touch-action: manipulation; /* removes tap delay / double-tap zoom waiting */
+  -webkit-tap-highlight-color: transparent;
 }
 
 
@@ -126,7 +133,7 @@ position: relative;
   right: var(--gold-rad);
 
   padding: 12px;
-display: grid;
+  display: grid;
   grid-template-columns: repeat(2, auto);
   grid-template-rows: repeat(2, auto);
   place-content: center;
@@ -176,14 +183,36 @@ display: grid;
 
 #found-scroll {
   display: grid;
-  grid-template-columns: repeat(4, max-content);
-  gap: 27.5px;
-  align-content: start;
-  justify-content: center;  /* centers each row */
+  grid-template-columns: repeat(3, max-content);
+  justify-content: center;     /* centers the last row */
   justify-items: center;
+  gap: 25px;
+  align-content: start;
   overflow: hidden; /* no scrolling */
   padding-top: 6px;
 }
+
+/* Finished layout rules (PUZZLE.n is always 5 or 7) */
+#found-scroll.final-7 {
+  grid-template-columns: repeat(3, max-content);
+}
+
+/* 2+2+1 layout */
+#found-scroll.final-5 {
+  grid-template-columns: repeat(2, max-content);
+}
+
+/* Center the LAST quad when finished */
+#found-scroll.final-7 .found-quad:last-child {
+  grid-column-start: 2; /* middle of 3 */
+  justify-self: center;
+}
+
+#found-scroll.final-5 .found-quad:last-child {
+  grid-column: 1 / -1; /* span both columns */
+  justify-self: center;
+}
+
 
 .toptext{
   width: 100%;
@@ -232,6 +261,8 @@ display: grid;
     --scale: 0.35em;
 }
 
+
+
 #buttons {
     grid-area: found;
     width: 100%;
@@ -241,12 +272,12 @@ display: grid;
 
 #reset-all {
     padding: 6px 12px;
-  font-family: "Impact", fantasy;
+    font-family: "Impact", fantasy;
     font-size: 0.9em;
     border-radius: 6px;
     border: 1px solid #FFFAF0;
     background: transparent;
-  color: #FFFAF0;
+    color: #FFFAF0;
     cursor: pointer;
 }
 

@@ -7,8 +7,8 @@ function onCardClicked(cardNum, cardEl) {
     // animate icons once on click
     cardEl.querySelectorAll(".icon").forEach(i => {
     i.classList.remove("fa-bounce");   // reset if already there
-    void i.offsetWidth;              // force reflow so it can restart
-    i.classList.add("fa-bounce");
+    //void i.offsetWidth;              // force reflow so it can restart
+    requestAnimationFrame(() => i.classList.add("fa-bounce"));
 });
 
 // remove it so it doesn’t keep looping
@@ -66,6 +66,7 @@ function onCardClicked(cardNum, cardEl) {
                 // Wait a little bit for the animation, and then put the found quad in the sidebar
                 setTimeout(() => {
                     createDomQuad(four);
+                    applyFinalFoundLayout();
                 }, 250);
 
 
@@ -93,6 +94,19 @@ function onCardClicked(cardNum, cardEl) {
     }
     
 }
+
+function applyFinalFoundLayout() {
+  const fs = document.getElementById("found-scroll");
+  if (!fs) return;
+
+  fs.classList.remove("final-5", "final-7");
+
+  if (progress.length === PUZZLE.n) {
+    fs.classList.add(PUZZLE.n === 5 ? "final-5" : "final-7");
+}
+}
+
+
 
 // Stores found quads in localstorage
 var progress = [];
@@ -190,9 +204,11 @@ function createListeners() {
     const card_container = document.getElementById("cards");
     PUZZLE.cards.forEach(c => {
         let el = createDomCard(c);
-        el.addEventListener("click",
-            () => onCardClicked(c, el),
-            { passive: true });
+        el.addEventListener("pointerdown", (e) => {
+          e.preventDefault();
+          el.setPointerCapture?.(e.pointerId);
+          onCardClicked(c, el);
+      });
         card_container.appendChild(el)
     });
 
@@ -243,6 +259,7 @@ function createListeners() {
         // Populate the sidebar
         // Don't animate these quads
         progress.forEach(q => createDomQuad(deQuadKey(q)));
+        applyFinalFoundLayout();
         // Set the finished class if we're done
         if (progress.length == PUZZLE.n)
             document.body.classList.add("finished");
@@ -279,6 +296,7 @@ function createListeners() {
         const foundScroll = document.getElementById("found-scroll");
         foundScroll.innerHTML = "";
         createDomQuad([0, 0, 0, 0]).classList.add("dummy");
+        applyFinalFoundLayout();
 
     // IMPORTANT: restart timer baseline used by updateTimer()
         start_time = newStart;
@@ -308,11 +326,22 @@ function fitToScreen() {
   const BOARD_W = 1100;
   const BOARD_H = 820;
 
-  const scale = Math.min(vw / BOARD_W, vh / BOARD_H, 1);
 
-  // Keep CSS centering, only change scale
-  container.style.transform = `translate(-50%, -50%) scale(${scale})`;
+  let scale = Math.min(vw / BOARD_W, vh / BOARD_H);
+
+ // Detect phones / small screens
+  if (vw < 700) {
+    scale *= 1.15;
+} 
+
+// Safety clamp (never overflow screen)
+scale = Math.min(scale, 1);
+
+container.style.transform = `translate(-50%, -50%) scale(${scale})`;
+
 }
+
+
 
 
 // Check the day
