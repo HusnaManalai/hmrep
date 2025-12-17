@@ -10,7 +10,7 @@ body {
 .viewport{
   position: fixed;
   inset: 0;
-  background: linear-gradient(135deg, #1E1B3A, #2E2966);
+  background: #131a24;
   overflow: hidden;
 }
 
@@ -75,10 +75,10 @@ body {
     justify-items: center;
 }
 /* Colors of card symbols */
-.color-0 { color: #FF90C2; } /* pink */
-.color-1 { color: #7BDFF2; } /* blue */
-.color-2 { color: #A3F7BF; } /* green */
-.color-3 { color: #FFC75F; } /* yellow */
+.color-0 { color: #e31b40; } /* pink */
+.color-1 { color: #1269e6; } /* blue */
+.color-2 { color: #22bf66; } /* green */
+.color-3 { color: #e3aa1b; } /* yellow */
 
 .card {
     margin: 0.1em;
