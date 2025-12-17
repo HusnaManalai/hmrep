@@ -1,4 +1,4 @@
-import {CARDS, DIM, daily} from './generate.mjs'
+import {DIM, daily} from './generate.mjs'
 
 // Keeps track of selected cards and their animations
 const CARDS_SELECTED = new Set();
@@ -241,8 +241,6 @@ function createListeners() {
     requestAnimationFrame(updateTimer)
 
     // Populate found-quads display
-    // Create dummy quad so that the width of the quads display will be correct
-    createDomQuad([0, 0, 0, 0]).classList.add("dummy");
     // Check progress in localstorage
     if (!(localStorage.getItem("progress_day") >= day)) {
         // No progress or progress is outdated
@@ -265,14 +263,11 @@ function createListeners() {
             document.body.classList.add("finished");
     }
 
-    // Set a random congratulation message
-    const messages = ["YOU FOUND ALL QUADS ᯓ★ ₊˚⊹ ", "GOOD JOB  ◝(ᵔᗜᵔ)◜ ", " ₊˚⊹♡ ₍ᐢ. .ᐢ₎   AWSOME YOU FOUND THEM ALL   ₍ᐢ. .ᐢ₎ ₊˚⊹♡ ", "  ݁ ˖ ݁𖥔 . NICE JOB FINDING ALL QUADS . ݁𖥔 ݁ ˖ ݁ ", "˗ˏˋ ★ ˎˊ˗  YAY YOU DID IT  ˗ˏˋ ★ ˎˊ˗", "★  ALL DONE  ★"];
-    document.getElementById("congrats").textContent = messages[Math.floor(Math.random() * messages.length)];
 
 // -------- Reset puzzle (timer + found quads) --------
     document.getElementById("reset-all").addEventListener("click", () => {
     // Optional confirmation (recommended)
-        if (!confirm("Reset today’s puzzle? This will clear all found quads and reset the timer.")) return;
+        if (!confirm("ARE YOU SURE??")) return;
 
     // Reset in-memory state
         progress = [];
@@ -295,7 +290,6 @@ function createListeners() {
     // Clear sidebar quads, then recreate the dummy sizing quad
         const foundScroll = document.getElementById("found-scroll");
         foundScroll.innerHTML = "";
-        createDomQuad([0, 0, 0, 0]).classList.add("dummy");
         applyFinalFoundLayout();
 
     // IMPORTANT: restart timer baseline used by updateTimer()
@@ -314,7 +308,6 @@ function createListeners() {
 
 
 
-
 function fitToScreen() {
   const container = document.querySelector(".container");
   const viewport = document.querySelector(".viewport");
@@ -322,23 +315,21 @@ function fitToScreen() {
   const vw = viewport ? viewport.clientWidth : window.innerWidth;
   const vh = viewport ? viewport.clientHeight : window.innerHeight;
 
-  // Must match .container width/height in CSS
+  // Must match .container size in CSS
   const BOARD_W = 1100;
   const BOARD_H = 820;
 
+  // Small safety margin so shadows don’t get clipped
+  const SAFE = 12;
 
-  let scale = Math.min(vw / BOARD_W, vh / BOARD_H);
+  const scale = Math.min(
+    (vw - SAFE) / BOARD_W,
+    (vh - SAFE) / BOARD_H,
+    1
+  );
 
- // Detect phones / small screens
-  if (vw < 700) {
-    scale *= 1.15;
-} 
-
-// Safety clamp (never overflow screen)
-scale = Math.min(scale, 1);
-
-container.style.transform = `translate(-50%, -50%) scale(${scale})`;
-
+  container.style.transform =
+    `translate(-50%, -50%) scale(${scale})`;
 }
 
 

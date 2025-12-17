@@ -15,20 +15,37 @@
 </head>
 <body>
     <div class="viewport">
-        <div class="container">
-            <h1 class="title"> TODAY'S PUZZLE: <span id="nquads">N</span> Quads</h1>
-            <h2 class="subtitle"> <span id="date"></span></h2>
-            <h2 class="time"> <span id="timer">00:00:00</span></h2>
-            <div id="found">
-                <h3 class="toptext"><span id="nfound">0</span>/<span id="nquads2">N</span> found </h3>
-                <div id="found-scroll"></div>
-            </div>
-            <h2 id="congrats">Well done!</h2>
-            <div id = "cards"></div>
-            <div id="buttons">
-                <button id="reset-all">Reset Puzzle</button>
-            </div>
-        </div>
+      <div class="container">
+        <h1 class="title">DAILY QUADS - <span id="nquads">N</span></h1>
+        <div class="time-controls">
+          <h2 class="time">
+            <i class="fa-regular fa-alarm-clock"></i>
+            <span id="timer"></span>
+        </h2>
+        <h2 class="subtitle"><span id="date"></span></h2>
+        <button id="reset-all">Reset Puzzle</button>
     </div>
+
+    <div id="found">
+      <h3 class="toptext"><span id="nfound">0</span> out of <span id="nquads2">N</span> found</h3>
+
+      <div id="found-scroll"></div>
+  </div>
+
+  <h2 id="congrats">
+    <i class="fa-solid fa-face-laugh fa-bounce"></i>
+    <i class="fa-regular fa-star fa-beat"></i>
+    <i class="fa-solid fa-asterisk fa-bounce"></i>
+    <i class="fa-regular fa-star fa-beat"></i>
+    YOU FOUND ALL QUADS!
+    <i class="fa-regular fa-star fa-beat"></i>
+    <i class="fa-solid fa-asterisk fa-bounce"></i>
+    <i class="fa-regular fa-star fa-beat"></i>
+    <i class="fa-solid fa-face-laugh fa-bounce"></i>
+</h2>
+<div id="cards"></div>
+</div>
+</div>
+
 </body>
 </html>

@@ -1,9 +1,1 @@
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
-<svg fill="#ffffff" width="256px" height="256px" viewBox="100 35 880 880" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff" stroke-width="0.01">
-<g id="SVGRepo_bgCarrier" stroke-width="0"/>
-<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
-<g id="SVGRepo_iconCarrier">
-<path d="M808 154H616l-1-7q-4-44-37-74t-78-30-78 30-37 74l-1 7H192q-31 0-53 22t-22 53v616q0 31 22 53.5t53 22.5h616q31 0 53-22.5t22-53.5V230q0-32-22-54t-53-22zm-308-41q18 0 31 13t13 31.5-13 31.5-31 13-31-13-13-31.5 13-31.5 31-13zm31 611H297q-8 0-14-5.5t-6-13.5v-48q0-8 6-13.5t14-5.5h234q8 0 14 5.5t6 13.5v48q0 8-6 13.5t-14 5.5zm172-150H297q-8 0-14-5.5t-6-13.5v-48q0-8 6-14t14-6h406q8 0 14 6t6 14v48q0 8-6 13.5t-14 5.5zm0-150H297q-8 0-14-5.5t-6-14.5v-47q0-8 6-14t14-6h406q8 0 14 6t6 14v47q0 9-6 14.5t-14 5.5z"/>
-</g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path fill="#ffffff" d="M128 128C128 92.7 156.7 64 192 64L448 64C483.3 64 512 92.7 512 128L512 512C512 547.3 483.3 576 448 576L192 576C156.7 576 128 547.3 128 512L128 128zM208 432C208 440.8 215.2 448 224 448L416 448C424.8 448 432 440.8 432 432C432 387.8 396.2 352 352 352L288 352C243.8 352 208 387.8 208 432zM320 312C350.9 312 376 286.9 376 256C376 225.1 350.9 200 320 200C289.1 200 264 225.1 264 256C264 286.9 289.1 312 320 312z"/></svg>

@@ -1,11 +1,18 @@
 /* "UI" base styling */
+
+html{
+    font-size: 100%;
+}
+
 body {
   margin: 0;
   overflow: hidden;         /* no page scroll */
   user-select: none;
   font-family: "Impact", fantasy;
   color: #FFFAF0;
+  font-size: clamp(18px, 2vw, 22px);
 }
+
 
 .viewport{
   position: fixed;
@@ -30,9 +37,7 @@ body {
 
     grid-template:
     "title"    2em
-    "subtitle" 2em
-    "found"    2em
-    "time"    2em
+    "found"    1em
     "congrats" 3em
     "cards"    2fr
     "quads"    1fr     /* reserved space for found quads */
@@ -65,6 +70,10 @@ body {
 .time {
     grid-area: time;
     text-align: center;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
 /* ----------- Card Layout Styles -------------- */
@@ -103,7 +112,7 @@ body {
     contain: strict;
     background:#ffbe0b;
     touch-action: manipulation; /* removes tap delay / double-tap zoom waiting */
-  -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: transparent;
 }
 
 
@@ -142,6 +151,7 @@ body {
   gap: 8px;   /* tighter spacing */
 }
 
+
 .card-inner .icon {
   font-size: 52px;
 }
@@ -171,12 +181,9 @@ body {
 /* ----------- Sidebar Styles -------------- */
 #found {
     grid-area: quads;
-/*    border-top: 1px solid #FFFAF0;
-    border-bottom: 1px solid #FFFAF0;
-    border-left: 1px solid #FFFAF0;
-    border-right: 1px solid #FFFAF0;*/
+    background: #1c2736;
     border-radius: 22px;
-    padding: 8px 0 0 0;
+    padding: 0.1px;
     min-width: 0;
 }
 
@@ -186,10 +193,10 @@ body {
   grid-template-columns: repeat(3, max-content);
   justify-content: center;     /* centers the last row */
   justify-items: center;
-  gap: 25px;
+  gap: 20px;
   align-content: start;
   overflow: hidden; /* no scrolling */
-  padding-top: 6px;
+  padding-top: 4px;
 }
 
 /* Finished layout rules (PUZZLE.n is always 5 or 7) */
@@ -213,11 +220,11 @@ body {
   justify-self: center;
 }
 
-
 .toptext{
   width: 100%;
   text-align: center;
   margin: 0 0 8px 0;
+  background: #2a3b52 ;
 }
 
 /* each found quad is a tight row of 4 mini cards */
@@ -225,13 +232,14 @@ body {
   display: grid;
   grid-template-columns: repeat(4, auto);
   gap: 2px;
+  background: #000000;
 }
 
 /* mini cards in found area */
 #found .card{
   width: 40px;
   height: 30px;
-  border-radius: 6px;
+  border-radius: 1px;
 }
 
 #found .card-inner .icon{
@@ -243,15 +251,6 @@ body {
   gap: 4px;
 }
 
-.found-quad.dummy {
-    display: none;
-    visibility: hidden;
-    height: 0;
-    /* Just to be safe... */
-    opacity: 0;
-    pointer-events: none;
-    overflow: hidden;
-}
 
 #found .card {
     --hover-scale: 1.035;
@@ -263,15 +262,8 @@ body {
 
 
 
-#buttons {
-    grid-area: found;
-    width: 100%;
-    text-align: center;
-    margin: 0 0 8px 0;
-}
-
 #reset-all {
-    padding: 6px 12px;
+    padding: 6px 14px;
     font-family: "Impact", fantasy;
     font-size: 0.9em;
     border-radius: 6px;
@@ -288,6 +280,15 @@ body {
 
 .finished #timer {
 
+}
+
+.time-controls {
+    grid-area: found;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;           /* space between timer & button */
+    margin: 10px;
 }
 
 
