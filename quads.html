@@ -1,37 +1,32 @@
 
-<!-- test!SS -->
-
 <!doctype html>
 <html>
-        <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>Daily Quads Puzzle</title>
-        <script src="https://kit.fontawesome.com/fa7780d4f9.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="style.css" type="text/css">
-        <script src="ui.js" type="module"></script>
-           
-    </head>
-    <body>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Daily Quads Puzzle</title>
+    <script src="https://kit.fontawesome.com/6bc2fa7b49.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script src="ui.js" type="module"></script>
+
+</head>
+<body>
+    <div class="viewport">
         <div class="container">
-            <h1 class="title"> Today's Quads Puzzle: <span id="nquads">N</span> Quads</h1>
+            <h1 class="title"> TODAY'S PUZZLE: <span id="nquads">N</span> Quads</h1>
             <h2 class="subtitle"> <span id="date"></span></h2>
-            <h2 id="congrats">Well done!</h2>
-
-            <div id = "cards">
-
-            </div>
-
             <div id="found">
                 <h3 class="toptext"><span id="nfound">0</span>/<span id="nquads2">N</span> found in <span id="timer">00:00:00</span></h3>
-                <div id="found-scroll">
-                </div>
+                <div id="found-scroll"></div>
             </div>
-
-               <div id="buttons">
-      </div>
+            <h2 id="congrats">Well done!</h2>
+            <div id = "cards"></div>
+            <div id="buttons">
+                <button id="reset-all">Reset Puzzle</button>
+            </div>
         </div>
-    </body>
+    </div>
+</body>
 </html>

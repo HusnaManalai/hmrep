@@ -4,6 +4,18 @@ import {CARDS, DIM, daily} from './generate.mjs'
 const CARDS_SELECTED = new Set();
 function onCardClicked(cardNum, cardEl) {
     cardEl.classList.toggle("selected");
+    // animate icons once on click
+    cardEl.querySelectorAll(".icon").forEach(i => {
+    i.classList.remove("fa-bounce");   // reset if already there
+    void i.offsetWidth;              // force reflow so it can restart
+    i.classList.add("fa-bounce");
+});
+
+// remove it so it doesn’t keep looping
+    setTimeout(() => {
+      cardEl.querySelectorAll(".icon").forEach(i => i.classList.remove("fa-bounce"));
+  }, 700);
+
 
     if (CARDS_SELECTED.delete(cardNum))
         return;
@@ -108,24 +120,29 @@ function deQuadKey(key) {
 function createDomCard(card) {
 
     const SHAPES = [
-        "fa-heart",
-        "fa-square",
-        "fa-star",
-        "fa-circle"
-    ];
+      ["fa-solid", "fa-heart"],
+      ["fa-solid", "fa-square"],
+      ["fa-solid", "fa-star"],
+      ["fa-solid", "fa-worm"]
+  ];
+
 
     // Convert to a base 4 array
-    const attrs = binToTup(card);
-    const color = attrs[0];
-    const number = attrs[1];
-    const shape = attrs[2];
+  const attrs = binToTup(card);
+  const color = attrs[0];
+  const number = attrs[1];
+  const shape = attrs[2];
 
-    let cardEl = document.createElement("div");
-    cardEl.classList.add("card");
+  let cardEl = document.createElement("div");
+  cardEl.classList.add("card");
 
-    let cardElInner = document.createElement("div");
-    cardElInner.classList.add("card-inner");
-    cardEl.appendChild(cardElInner);
+  let cardElInner = document.createElement("div");
+  cardElInner.classList.add("card-inner");
+  cardEl.appendChild(cardElInner);
+
+    const count = number + 1;                 // number is 0–3 → count is 1–4
+    cardElInner.classList.add(`count-${count}`);
+
 
     // Set attributes
     cardEl.classList.add(`color-${color}`);
@@ -133,7 +150,7 @@ function createDomCard(card) {
     // Add icons
     for (let n = 0; n <= number; n++) {
         let icon = document.createElement("i");
-        icon.classList.add("fas", SHAPES[shape]);
+        icon.classList.add(...SHAPES[shape], "icon");
 
         cardElInner.appendChild(icon);
     }
@@ -159,12 +176,12 @@ function createDomQuad(quad) {
 // Populates the page content
 function createListeners() {
     document.getElementById("date").textContent =
-        timestamp.toLocaleDateString("default", {
-            "timeZone": "UTC",
-            "day": "numeric",
-            "month": "long",
-            "year": "numeric"
-        })
+    timestamp.toLocaleDateString("default", {
+        "timeZone": "UTC",
+        "day": "numeric",
+        "month": "long",
+        "year": "numeric"
+    })
 
     document.getElementById("nquads").textContent = PUZZLE.n;
     document.getElementById("nquads2").textContent = PUZZLE.n;
@@ -200,7 +217,7 @@ function createListeners() {
 
         // Now update the actual timer text
         // Get ISO time in hours, as the time elapsed can never be more than 24 hrs.
-        timer.textContent = (new Date(ms)).toISOString().substr(11, 8)
+        time_container.textContent = (new Date(ms)).toISOString().substr(11, 8)
 
     }
     // We want the timer to only update when the browser is rendering.
@@ -232,10 +249,71 @@ function createListeners() {
     }
 
     // Set a random congratulation message
-    const messages = ["Well done!", "Good job!", "Awesome!", "Nice job!", "You did it!", "All done!"];
+    const messages = ["YOU FOUND ALL QUADS ᯓ★ ₊˚⊹ ", "GOOD JOB  ◝(ᵔᗜᵔ)◜ ", " ₊˚⊹♡ ₍ᐢ. .ᐢ₎   AWSOME YOU FOUND THEM ALL   ₍ᐢ. .ᐢ₎ ₊˚⊹♡ ", "  ݁ ˖ ݁𖥔 . NICE JOB FINDING ALL QUADS . ݁𖥔 ݁ ˖ ݁ ", "˗ˏˋ ★ ˎˊ˗  YAY YOU DID IT  ˗ˏˋ ★ ˎˊ˗", "★  ALL DONE  ★"];
     document.getElementById("congrats").textContent = messages[Math.floor(Math.random() * messages.length)];
 
+// -------- Reset puzzle (timer + found quads) --------
+    document.getElementById("reset-all").addEventListener("click", () => {
+    // Optional confirmation (recommended)
+        if (!confirm("Reset today’s puzzle? This will clear all found quads and reset the timer.")) return;
+
+    // Reset in-memory state
+        progress = [];
+        CARDS_SELECTED.clear();
+        finish_time = 0;
+
+    // Reset storage for TODAY
+        localStorage.setItem("progress_day", String(day));
+        localStorage.setItem("progress_quads", JSON.stringify(progress));
+
+        const newStart = Date.now();
+        localStorage.setItem("start_time", String(newStart));
+        localStorage.removeItem("finish_time");
+
+    // Reset UI: count + timer + finished banner
+        document.getElementById("nfound").textContent = "0";
+        document.getElementById("timer").textContent = "00:00:00";
+        document.body.classList.remove("finished");
+
+    // Clear sidebar quads, then recreate the dummy sizing quad
+        const foundScroll = document.getElementById("found-scroll");
+        foundScroll.innerHTML = "";
+        createDomQuad([0, 0, 0, 0]).classList.add("dummy");
+
+    // IMPORTANT: restart timer baseline used by updateTimer()
+        start_time = newStart;
+    });
+
+    // Fit board to screen (scale only; layout stays the same)
+    fitToScreen();
+    window.addEventListener("resize", fitToScreen);
+    window.addEventListener("fullscreenchange", fitToScreen);
+    setTimeout(fitToScreen, 0);
+
 }
+
+
+
+
+
+
+function fitToScreen() {
+  const container = document.querySelector(".container");
+  const viewport = document.querySelector(".viewport");
+
+  const vw = viewport ? viewport.clientWidth : window.innerWidth;
+  const vh = viewport ? viewport.clientHeight : window.innerHeight;
+
+  // Must match .container width/height in CSS
+  const BOARD_W = 1100;
+  const BOARD_H = 820;
+
+  const scale = Math.min(vw / BOARD_W, vh / BOARD_H, 1);
+
+  // Keep CSS centering, only change scale
+  container.style.transform = `translate(-50%, -50%) scale(${scale})`;
+}
+
 
 // Check the day
 const timestamp = new Date();
@@ -245,7 +323,7 @@ const PUZZLE = daily(day);
 
 // Once DOM is ready, populate the page
 if (document.readyState === "complete" ||
-   (document.readyState !== "loading" && !document.documentElement.doScroll) )
+ (document.readyState !== "loading" && !document.documentElement.doScroll) )
     createListeners();
 else
     document.addEventListener("DOMContentLoaded", createListeners);

@@ -1,0 +1,147 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Impact", fantasy;
+}
+
+.viewport {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: #FFFADB;
+}
+
+.frame {
+  width: min(96vw, 1100px);
+  height: min(96vh, 820px);
+  background: #FFADEE;
+  border-radius: 18px;
+  padding: 16px;
+}
+
+.container {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  grid-template-rows: auto auto auto 1fr;
+  gap: 18px;
+}
+
+/* LEFT COLUMN */
+.title,
+.subtitle {
+  background: #77c7f2;
+  border-radius: 18px;
+  padding: 16px;
+  text-align: center;
+  margin: 0;
+}
+
+#congrats {
+  text-align: center;
+  margin: 0;
+}
+
+#found {
+  background: #f3d664;
+  border-radius: 18px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.toptext {
+  margin: 0 0 8px 0;
+  text-align: center;
+}
+
+#found-scroll {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 10px;
+  overflow-y: auto;
+}
+
+/* RIGHT GRID */
+#cards {
+  grid-column: 2;
+  grid-row: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 14px;
+}
+
+/* CARD */
+.card {
+  background: #fffaf0;
+  border-radius: 18px;
+  box-shadow: 0 2px 4px rgba(0,0,0,.18);
+  position: relative;
+  overflow: hidden;
+  transition: transform .15s ease;
+}
+
+.card:hover,
+.card.selected {
+  transform: scale(1.03);
+}
+
+.card-inner {
+  height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 12px;
+}
+
+/* ICON SIZE */
+.card-inner i {
+  font-size: clamp(36px, 4vw, 68px);
+}
+
+/* COUNTS */
+.card-inner.count-1 {
+  grid-template-columns: 1fr;
+}
+
+.card-inner.count-2 {
+  grid-template-columns: repeat(2, auto);
+  gap: 12px;
+}
+
+.card-inner.count-3 {
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(2, auto);
+  gap: 10px;
+}
+
+.card-inner.count-3 i:nth-child(3) {
+  grid-column: 1 / span 2;
+}
+
+.card-inner.count-4 {
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(2, auto);
+  gap: 10px;
+}
+
+/* MOBILE */
+@media (max-width: 740px) {
+  .frame {
+    height: auto;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto 1fr;
+  }
+
+  #cards {
+    grid-column: 1;
+    grid-row: 5;
+  }
+}

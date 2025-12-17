@@ -1,30 +1,44 @@
 /* "UI" base styling */
 body {
-    margin: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: #1d3030;
-    user-select: none; 
-    font-family: "Impact", fantasy;
-    color: #FFFAF0;
+  margin: 0;
+  overflow: hidden;         /* no page scroll */
+  user-select: none;
+  font-family: "Impact", fantasy;
+  color: #FFFAF0;
 }
-.container {
-    color: #FFFAF0;
-    margin: 0;
-    height: 100vh;
-    width: 100vw;
-    box-sizing: border-box;
-    padding: 10px;
-    display: grid;
-    /* Page layout defined here */
-    grid-template:
-        "title     title   " 4em
-        "subtitle  congrats" 2em
-        "cards     quads   " minmax(0, 1fr)
-        "cards     buttons " 1em
-      /  1fr       auto;
 
+.viewport{
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #1E1B3A, #2E2966);
+  overflow: hidden;
 }
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+  transform-origin: center;
+    width: 1100px;
+    height: 820px;
+
+    padding: 20px;
+    box-sizing: border-box;
+    display: grid;
+    gap: 10px;
+
+    grid-template:
+    "title"    2em
+    "subtitle" 2em
+    "found"    2em
+    "congrats" 3em
+    "cards"    2fr
+    "quads"    1fr     /* reserved space for found quads */
+    / 1fr;
+}
+
+
 /* ----------- Header Styles ------------ */
 .title {
     margin: auto 20px;
@@ -39,7 +53,7 @@ body {
 
 #congrats {
     grid-area: congrats;
-    color: ;    
+  color: #FFFAF0;
     visibility: hidden;
     text-align: center;
 }
@@ -53,43 +67,36 @@ body {
     --n-rows: 2;
 
     grid-area: cards;
-
     display: grid;
-    grid-template-columns: repeat(var(--n-cols, 4), 1fr);
-    grid-template-rows: repeat(var(--n-rows, 2), 1fr);
+    grid-template-columns: repeat(4, auto);
+    gap: 10px;
     padding: 10px;
-
+    justify-content: center;
     justify-items: center;
-    align-items: center;
-
-    contain: content;
 }
 /* Colors of card symbols */
-.color-0 { color: #DC143C; }
-.color-1 { color: #00008B; }
-.color-2 { color: #008000; }
-.color-3 { color: #FFD700; }
+.color-0 { color: #FF90C2; } /* pink */
+.color-1 { color: #7BDFF2; } /* blue */
+.color-2 { color: #A3F7BF; } /* green */
+.color-3 { color: #FFC75F; } /* yellow */
 
 .card {
-
-    margin-left: 0.1em;
-    margin-right: 0.1em;
+    margin: 0.1em;
     padding: 0;
-    height: 16.0em;
-    width: 15em;
-    position: relative;
+    height: 160px;
+    width: 250px;
+position: relative;
     --gold-rad: 0.6vh;
     --hover-scale: 1.025;
     --transition-time: 0.15s;
     --border-time: 0.08s;
     --scale: 1em;
     font-size: var(--scale, 1em);
-    border-radius: 10px;
+    border-radius: 12px;
     box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.25);
-
     contain: strict;
     background: radial-gradient(ellipse farthest-corner at right top, #feed9b 0%, #fedc98 8%, #efcc93 30%, #d4c697 40%, transparent 80%),
-        radial-gradient(ellipse farthest-corner at left bottom, #ffffd5 0%, #ffffac 8%, #e8d9b1 25%, #deb49f 62.5%, #beb49f 100%);
+    radial-gradient(ellipse farthest-corner at left bottom, #ffffd5 0%, #ffffac 8%, #e8d9b1 25%, #deb49f 62.5%, #beb49f 100%);
 }
 
 
@@ -107,74 +114,110 @@ body {
     background: #FFFAF0;
 }
 
-/* Covers the gold background all of the time -- container for icons */
 .card-inner {
-    z-index: 2;
-    border-radius: inherit;
-    background: #FFFAF0;
+  z-index: 2;
+  border-radius: inherit;
+  background: #FFF7E9;
 
-    padding: 1em;
+  position: absolute;
+  top: var(--gold-rad);
+  left: var(--gold-rad);
+  bottom: var(--gold-rad);
+  right: var(--gold-rad);
 
-    position: absolute;
-    top: var(--gold-rad);
-    left: var(--gold-rad);
-    bottom: var(--gold-rad);
-    right: var(--gold-rad);
+  padding: 12px;
+display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(2, auto);
+  place-content: center;
+  place-items: center;
 
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    align-items: center;
-    justify-content: space-evenly;
-    box-sizing: border-box;
+  gap: 8px;   /* tighter spacing */
 }
 
-.card-inner i {
-    font-size: 3.5em;
+.card-inner .icon {
+  font-size: 52px;
 }
+
+/* 1 shape: centered */
+.card-inner.count-1 .icon {
+  grid-column: 1 / 3;
+  grid-row: 1 / 3;
+}
+
+/* 2 shapes: side-by-side in middle row */
+.card-inner.count-2 .icon:nth-child(1) { grid-column: 1; grid-row: 1 / 3; }
+.card-inner.count-2 .icon:nth-child(2) { grid-column: 2; grid-row: 1 / 3; }
+
+/* 3 shapes: two top, one bottom centered */
+.card-inner.count-3 .icon:nth-child(1) { grid-column: 1; grid-row: 1; }
+.card-inner.count-3 .icon:nth-child(2) { grid-column: 2; grid-row: 1; }
+.card-inner.count-3 .icon:nth-child(3) { grid-column: 1 / 3; grid-row: 2; }
+
+/* 4 shapes: 2x2 */
+.card-inner.count-4 .icon:nth-child(1) { grid-column: 1; grid-row: 1; }
+.card-inner.count-4 .icon:nth-child(2) { grid-column: 2; grid-row: 1; }
+.card-inner.count-4 .icon:nth-child(3) { grid-column: 1; grid-row: 2; }
+.card-inner.count-4 .icon:nth-child(4) { grid-column: 2; grid-row: 2; }
 
 
 /* ----------- Sidebar Styles -------------- */
 #found {
     grid-area: quads;
-    border-left: 2px solid #FFFAF0;
-    padding: 10px 20px 0 20px;
-    display: flex;
-    flex-direction: column;
-    min-width: 15em;
-    contain: content;
+/*    border-top: 1px solid #FFFAF0;
+    border-bottom: 1px solid #FFFAF0;
+    border-left: 1px solid #FFFAF0;
+    border-right: 1px solid #FFFAF0;*/
+    border-radius: 22px;
+    padding: 8px 0 0 0;
+    min-width: 0;
 }
+
 
 #found-scroll {
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: stretch;
-
-    overflow-y: auto;
-
+  display: grid;
+  grid-template-columns: repeat(4, max-content);
+  gap: 27.5px;
+  align-content: start;
+  justify-content: center;  /* centers each row */
+  justify-items: center;
+  overflow: hidden; /* no scrolling */
+  padding-top: 6px;
 }
-.toptext {
-    margin: 10px;
-    overflow: hidden;
-    /* The other contains are probably not important.
-     * But this one might be, as the timer changes every second,
-     * so having a contain here makes sure that when it does, only the layout of this line of text is recomputed. */
-    contain: strict;
-    width: 15em;
-    height: 1.2em;
-    line-height: 1.2em;
-    text-align: center;
+
+.toptext{
+  width: 100%;
+  text-align: center;
+  margin: 0 0 8px 0;
 }
-.found-quad {
-    display: flex;
-    justify-content: space-evenly;
-    margin: 5px;
+
+/* each found quad is a tight row of 4 mini cards */
+.found-quad{
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  gap: 2px;
+}
+
+/* mini cards in found area */
+#found .card{
+  width: 40px;
+  height: 30px;
+  border-radius: 6px;
+}
+
+#found .card-inner .icon{
+  font-size: clamp(2px, 2.6vh, 11px);
+}
+
+#found .card-inner{
+  padding: 5px;
+  gap: 4px;
 }
 
 .found-quad.dummy {
+    display: none;
     visibility: hidden;
     height: 0;
-
     /* Just to be safe... */
     opacity: 0;
     pointer-events: none;
@@ -190,19 +233,40 @@ body {
 }
 
 #buttons {
-    grid-area: buttons;
+    grid-area: found;
+    width: 100%;
+    text-align: center;
+    margin: 0 0 8px 0;
 }
+
+#reset-all {
+    padding: 6px 12px;
+  font-family: "Impact", fantasy;
+    font-size: 0.9em;
+    border-radius: 6px;
+    border: 1px solid #FFFAF0;
+    background: transparent;
+  color: #FFFAF0;
+    cursor: pointer;
+}
+
+#reset-all:hover {
+    background: rgba(255, 250, 240, 0.15);
+}
+
+
 .finished #timer {
 
 }
+
 
 /* ----------- Animations -------------- */
 
 /* "Lifting Up" */
 #cards .card {
     transition: box-shadow ease-out var(--transition-time),
-                transform ease-out var(--transition-time),
-                filter ease-out var(--border-time);
+    transform ease-out var(--transition-time),
+    filter ease-out var(--border-time);
 }
 
 #cards .card:hover, .card.selected, .card.animating {
@@ -384,110 +448,3 @@ body {
         transform: scale(1.035);
     }
 }
-
-/* -------- media queries ---------- */
-
-/* Small desktop displays */
-/* I'm going to assume that nobody in 2021 has a landscape display much smaller than this */
-/* No parenthesis in @media rules as far as I can tell :( */
-/* Phones in PORTRAIT:
-   Sidebar moves UNDER the cards */
-/* ========= RESPONSIVE TUNING ========= */
-
-/* Desktop / laptop:
-   as the window gets smaller or shorter, shrink the whole board slightly.
-   Layout stays identical. */
-/* ========= RESPONSIVE TUNING ========= */
-
-/* Desktop / laptop:
-   as the window gets smaller or shorter, shrink the whole board slightly.
-   Layout stays identical. */
-@media (max-width: 1440px), (max-height: 900px) {
-  #cards .card {
-    --scale: 0.9em;
-  }
-  #found .card {
-    --scale: 0.32em;
-  }
-}
-
-@media (max-width: 1280px), (max-height: 820px) {
-  #cards .card {
-    --scale: 0.8em;
-  }
-  #found .card {
-    --scale: 0.28em;
-  }
-}
-
-@media (max-width: 1120px), (max-height: 760px) {
-  #cards .card {
-    --scale: 0.7em;
-  }
-  #found .card {
-    --scale: 0.24em;
-  }
-}
-
-/* Phones / small tablets in LANDSCAPE:
-   same side-by-side layout, just much smaller so everything fits. */
-@media (max-width: 900px) and (orientation: landscape) {
-  #cards .card {
-    --scale: 0.55em;
-  }
-  #found .card {
-    --scale: 0.20em;
-  }
-
-  body,
-  .container {
-    height: 100vh;
-    overflow: hidden; /* avoid scrolling if possible */
-  }
-}
-
-/* Phones in PORTRAIT:
-   - stack layout vertically
-   - sidebar (#found) goes UNDER the cards
-   - extra shrink so it fits on a tall, narrow screen */
-@media (max-width: 600px) and (orientation: portrait) {
-
-  .container {
-    grid-template:
-      "title"    auto
-      "subtitle" auto
-      "cards"    auto
-      "quads"    auto   /* #found below cards */
-      "buttons"  auto
-      / 1fr;
-
-    height: auto;
-    width: 100vw;
-    overflow-x: hidden;
-  }
-
-  /* shrink main cards */
-  #cards .card {
-    --scale: 0.55em;   /* tweak up/down if too big/small */
-  }
-
-  /* sidebar full width, no left border, thin top divider */
-  #found {
-    border-left: none;
-    border-top: 2px solid #FFFAF0;
-    width: 100%;
-    min-width: 0;
-    padding: 10px 0;
-  }
-
-  /* shrink found-quad cards further */
-  #found .card {
-    --scale: 0.22em;
-  }
-
-  body {
-    height: 100vh;
-    overflow: hidden;
-  }
-}
-
