@@ -190,10 +190,10 @@ function createDomQuad(quad) {
 // Populates the page content
 function createListeners() {
     document.getElementById("date").textContent =
-    timestamp.toLocaleDateString("default", {
-        "timeZone": "UTC",
+    timestamp.toLocaleDateString("en-US", {
+        "timeZone": "America/New_York",
         "day": "numeric",
-        "month": "long",
+        "month": "numeric",
         "year": "numeric"
     })
 
@@ -333,11 +333,24 @@ function fitToScreen() {
 }
 
 
+function nyDayKey() {
+  // "12/17/2025" in NY time
+  const ny = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/New_York",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(new Date());
+
+  const [mm, dd, yyyy] = ny.split("/");
+  return Number(`${yyyy}${mm}${dd}`); // 20251217
+}
+
 
 
 // Check the day
 const timestamp = new Date();
-const day = Math.floor(timestamp.getTime() / (1000 * 60 * 60 * 24));
+const day = nyDayKey();
 // Start generating puzzle even before DOM content is ready
 const PUZZLE = daily(day);
 
