@@ -40,13 +40,12 @@ body{
   gap: 10px;
 
   grid-template:
-    "title"    auto
-    "date"     auto
-    "topbar"   auto
-    "congrats" auto
-    "cards"    2fr
-    "quads"    1fr
-    / 1fr;
+  "title"    auto
+  "topbar"   auto
+  "congrats" auto
+  "cards"    2fr
+  "quads"    1fr
+  / 1fr;
 }
 
 /* =========================
@@ -61,50 +60,56 @@ body{
 }
 
 .date{
-  grid-area: date;
-  margin: 0px;
+  margin: 0;
   text-align: center;
-  opacity: 0.95;
   font-size: clamp(18px, 2.2vw, 26px);
-  border: 1px solid rgba(255,250,240,0.75);
-  border-radius: 5px;
-  font-size: clamp(18px, 2.2vw, 26px);
+  border-radius: 9px;
   padding: 10px;
-  color: #ff6;
-  background: #2a3b52;
 }
 
 .topbar{
   grid-area: topbar;
-  display: flex;
+  display: grid;
   align-items: center;
-  justify-content: space-between; /* timer left, button right */
+  grid-template-columns: 1fr auto 1fr; /* left / center / right */
   gap: 16px;
+  background: #2a3b52;
+  border-radius: 9px;
+
 
 }
+.time{
+  justify-self: start;   /* left */
+}
+
+.date{
+  justify-self: center;  /* dead center */
+}
+
+#reset-all{
+  justify-self: end;     /* right */
+}
+
 
 .time{
   margin: 0px;
   border-radius: 10px;
   display: inline-flex;
   align-items: center;
-  border: 1px solid rgba(255,250,240,0.75);
   font-size: clamp(18px, 2.2vw, 26px);
   padding: 10px;
-  border-radius: 5px;
-  color: #ff6;
-  background: #2a3b52;
+  border-radius: 9px;
 }
 
 #reset-all{
   padding: 8px 16px;
   font-family: inherit;
-  font-size: 0.95em;
-  border-radius: 5px;
-  border: 1px solid rgba(255,250,240,0.75);
+  font-size: clamp(18px, 2.2vw, 26px);
+  border-radius: 9px;
+  border: 1px solid #2a3b52;
   background: #2a3b52;
-  color: #ff6;
   cursor: pointer;
+  color: #FFFAF0;
 }
 #reset-all:hover{
   background: rgba(150,150,240,0.35);
@@ -227,9 +232,9 @@ body{
 ========================= */
 #cards .card{
   transition:
-    box-shadow var(--transition-time) ease-out,
-    transform var(--transition-time) ease-out,
-    filter var(--border-time) ease-out;
+  box-shadow var(--transition-time) ease-out,
+  transform var(--transition-time) ease-out,
+  filter var(--border-time) ease-out;
 }
 
 #cards .card:hover,
@@ -282,9 +287,7 @@ body{
   text-align: center;
   margin: 0 0 8px 0;
   background: #2a3b52;
-  border: 1px solid rgba(255,250,240,0.75);
-  border-radius: 5px;
-  color: #ff6;
+  border-radius: 9px;
 
 }
 
@@ -341,7 +344,7 @@ body{
    Animations (keep yours if you want)
 ========================= */
 .card-inner{ 
-    transition: filter var(--border-time); 
+  transition: filter var(--border-time); 
 }
 
 .card.incorrect{
