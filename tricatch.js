@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Start countdown timer
     function startTimer() {
       clearInterval(timer);
-      timeLeft = 20;
+      timeLeft = 80;
       timerDisplay.textContent = timeLeft;
       
       timer = setInterval(() => {
@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function checkWinCondition() {
       if (matches >= (level + 2)) {
         clearInterval(timer);
-        winMessage.innerText = "🎉 Win 🎉";
+        winMessage.innerText = "WIN!";
         showScreen(winScreen);
       }
     }
@@ -159,7 +159,7 @@ document.querySelectorAll(".home-btn").forEach(btn => {
     
 
     nextLevelBtn.addEventListener("click", () => {
-      if (level < 5) {
+      if (level < 3) {
         level++;
         levelDisplay.textContent = level;
         generateCards(level);
@@ -167,7 +167,7 @@ document.querySelectorAll(".home-btn").forEach(btn => {
         showScreen(gameScreen);
       } else {
         clearInterval(timer);
-        winMessage.innerText = "All five levels completed";
+        winMessage.innerText = "All three levels completed";
         nextLevelBtn.style.display = "none";
         showScreen(winScreen);
       }

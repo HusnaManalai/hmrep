@@ -1,16 +1,60 @@
-/* GAMES SECTION */
+/* ===== Top Nav (home left, gamepad right) ===== */
+.logo {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  z-index: 1000;
 
-.menu {
   display: flex;
+  align-items: center;
   justify-content: center;
-  align-items: flex-start;
-  gap: 3rem;
-  margin-top: 3rem;
-  color: white;
-  flex-wrap: wrap; /* allows wrap on small screens */
+
+  margin: 0;
+  line-height: 1;
 }
 
-/* Individual game card */
+/* clickable icon buttons */
+.logo a {
+  width: 48px;
+  height: 48px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 28px;
+  line-height: 1;
+
+  color: #fff;
+  text-decoration: none;
+  border-radius: 14px;
+
+  transition: transform 0.2s ease;
+}
+
+.logo a:hover {
+  transform: scale(1.08);
+}
+
+
+/* ===== Cards ===== */
+.menu {
+  min-height: 100vh;
+
+  /* reserve space for fixed top bar + divider */
+  padding-top: 110px;
+  padding-left: clamp(16px, 4vw, 40px);
+  padding-right: clamp(16px, 4vw, 40px);
+  padding-bottom: clamp(16px, 4vw, 40px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(1rem, 4vw, 3rem);
+  flex-wrap: wrap;
+}
+
 .game-card {
   display: flex;
   flex-direction: column;
@@ -18,28 +62,15 @@
   text-align: center;
 }
 
-/* Game icon */
 .game-card img {
-  width: 250px;
-  height: 250px;
-  padding: 5px;
-  margin-bottom: 0.8rem;
-  border: 1.5px;
-  border-radius: 12px;
-  background: #ff6;
-  transition: transform 0.4s ease, box-shadow 0.3s ease;
-}
+  width: clamp(140px, 22vw, 260px);
+  height: auto;
+  object-fit: contain;
 
-.game-card img:hover {  
-  transform: scale(0.98);
-  box-shadow: 0 0 10px #ff6;
-}
-
-/* Caption */
-.game-card h2 {
-  font-size: 0.7rem;
-  margin: 0;
-  color: #ff6;
+  transition: transform 0.45s ease;
 }
 
 
+.game-card img:hover {
+  transform: scale(1.12);
+}

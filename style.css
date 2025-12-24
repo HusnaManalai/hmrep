@@ -59,6 +59,19 @@ body{
   letter-spacing: 1px;
 }
 
+.title a {
+  color: white;
+ text-decoration: none;
+ transition: color 0.3s ease, transform 0.3s ease;
+ font-size: clamp(32px, 2vw, 52px);
+ font-size: ;
+}
+
+.title a:hover {
+  color: #ff1493;
+  transform: scale(1.1);
+}
+
 .date{
   margin: 0;
   text-align: center;
@@ -75,8 +88,6 @@ body{
   gap: 16px;
   background: #2a3b52;
   border-radius: 9px;
-
-
 }
 .time{
   justify-self: start;   /* left */
@@ -302,8 +313,12 @@ body{
   padding-top: 4px;
 }
 
-#found-scroll.final-7{ grid-template-columns: repeat(3, max-content); }
-#found-scroll.final-5{ grid-template-columns: repeat(2, max-content); }
+#found-scroll.final-7{ 
+  grid-template-columns: repeat(3, max-content); 
+}
+#found-scroll.final-5{ 
+  grid-template-columns: repeat(2, max-content); 
+}
 
 #found-scroll.final-7 .found-quad:last-child{
   grid-column-start: 2;
