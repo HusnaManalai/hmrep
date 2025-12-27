@@ -40,9 +40,11 @@
 
 .game-board {
   display: grid;
-  gap: 5px;
-  max-width: 100%;  
-  padding: 0rem;     
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  grid-auto-rows: 1fr;                  /* rows auto, same height */
+  gap: 10px;                             /* adjust spacing */
+  width: min(520px, 92vw);               /* keeps board from getting huge */
+  padding: 0;
   border-radius: 10px;
 }
 
@@ -51,9 +53,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 3rem;  
-  color: white;
-  border-radius: 10px;
+  font-size: 3rem;
   cursor: pointer;
   transition: transform 0.5s ease;
   width: 100%;
