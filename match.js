@@ -187,7 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   nextLevelBtn.addEventListener("click", () => {
-    if (level < 4) {
+    if (level < 6) {
       level++;
       levelDisplay.textContent = level;
       generateCards(level);
