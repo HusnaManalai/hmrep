@@ -339,6 +339,7 @@ function createListeners() {
 }
 
 function fitToScreen() {
+  if (window.innerWidth <= 520) return;
   const container = document.querySelector(".container");
   const viewport = document.querySelector(".viewport");
 

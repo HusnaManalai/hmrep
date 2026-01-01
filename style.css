@@ -419,3 +419,132 @@ body{
   from { transform: scale(1.0); }
   to   { transform: scale(1.035); }
 }
+
+
+/* =========================
+   MOBILE LAYOUT OVERRIDE (Quads)
+   Put this at the VERY BOTTOM of style.css
+========================= */
+@media (max-width: 720px){
+
+  body{
+    overflow: auto;
+  }
+
+  .viewport{
+    position: relative;   
+    inset: auto;
+    overflow: visible;   
+    min-height: 100svh;
+  }
+
+  .container{
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none !important; 
+    width: 100%;
+    height: auto;
+
+    padding: 14px 12px 16px;
+    gap: 10px;
+
+    /* make the grid a normal vertical stack */
+    grid-template:
+      "title"   auto
+      "topbar"  auto
+      "congrats" auto
+      "quads"   1fr
+      "cards"   auto
+      
+      / 1fr;
+  }
+
+  /* title smaller + wrap nicely */
+  .title{
+    font-size: clamp(18px, 5vw, 26px);
+    line-height: 1.12;
+    padding: 6px 4px 0;
+  }
+
+  .title a{
+    font-size: clamp(18px, 5vw, 26px);
+  }
+
+  .topbar{
+    grid-template-columns: 1fr 1 fr;
+    grid-template-areas:
+      "time date reset ";
+    gap: 10px;
+    padding: 2px;
+  }
+
+  .time{ grid-area: time; justify-self: start; }
+  #reset-all{ grid-area: reset; justify-self: end; }
+  .date{ grid-area: date; justify-self: center; }
+
+  .time, .date, #reset-all{
+    font-size: 16px;
+    padding: 8px 10px;
+  }
+
+  /* cards: 2 columns, big tap targets */
+  #cards{
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 6px 2px;
+  }
+
+  /* override fixed card sizes */
+  .card{
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;     /* matches your wide cards feel */
+    border-radius: 14px;
+    margin: 0;
+    box-shadow: 0px 6px 14px rgba(0,0,0,0.25);
+  }
+
+  .card-inner{
+    padding: 10px;
+    gap: 6px;
+  }
+
+  .card-inner .icon{
+    font-size: clamp(30px, 9vw, 46px);
+  }
+
+  /* found section: keep it visible and not giant */
+  #found{
+    display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+    padding: 0.01px;
+    border-radius: 5px;
+
+  }
+
+  .toptext{
+    font-size: 18px;
+    padding: 1px;
+    margin: 2px;
+    border-radius: 5px;
+  }
+
+
+  #found .card{
+    width: 35px;
+    height: 25px;
+    border-radius: 5px;
+
+  }
+
+  #found .card-inner{
+  padding: 5px;
+  gap: 3px;
+}
+  #found .card-inner .icon{
+  font-size: clamp(0.6px, 2.5vh, 9.1px);
+  } 
+}
+
