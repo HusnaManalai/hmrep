@@ -1,8 +1,13 @@
 /* =========================
    Base
 ========================= */
-html { font-size: 100%; }
-* { -webkit-tap-highlight-color: transparent; }
+html { 
+  font-size: 100%;
+}
+* { 
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
+}
 
 body{
   margin: 0;
@@ -48,6 +53,8 @@ body{
   "cards"    2fr
   "quads"    1fr
   / 1fr;
+
+  overscroll-behavior: none;
 }
 
 /* =========================
@@ -63,10 +70,10 @@ body{
 
 .title a {
   color: white;
- text-decoration: none;
- transition: color 0.3s ease, transform 0.3s ease;
- font-size: clamp(32px, 2vw, 52px);
- font-size: ;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+  font-size: clamp(32px, 2vw, 52px);
+  font-size: ;
 }
 
 .title a:hover {
@@ -451,13 +458,13 @@ body{
 
     /* make the grid a normal vertical stack */
     grid-template:
-      "title"   auto
-      "topbar"  auto
-      "congrats" auto
-      "cards"   auto
-      "quads"   1fr
-      
-      / 1fr;
+    "title"   auto
+    "topbar"  auto
+    "congrats" auto
+    "cards"   auto
+    "quads"   1fr
+
+    / 1fr;
   }
 
   /* title smaller + wrap nicely */
@@ -537,11 +544,11 @@ body{
   }
 
   #found .card-inner{
-  padding: 5px;
-  gap: 3px;
-}
+    padding: 5px;
+    gap: 3px;
+  }
   #found .card-inner .icon{
-  font-size: clamp(0.6px, 2.5vh, 9.1px);
+    font-size: clamp(0.6px, 2.5vh, 9.1px);
   } 
 }
 
