@@ -9,11 +9,13 @@
 
 html, body {
   height: 100%;
+  overscroll-behavior: none;
 }
 
 html {
   scroll-behavior: smooth;
   font-size: clamp(18px, 2vw, 22px);
+  overscroll-behavior: none;
 }
 
 body {
@@ -27,7 +29,7 @@ body {
   text-align: center;
   background: #0c0114;
   background: radial-gradient(circle, rgba(12, 1, 20, 1) 83%, rgba(31, 9, 143, 1) 94%, rgba(99, 122, 255, 1) 99%);
-
+  overscroll-behavior: none;
 
 }
 
