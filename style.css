@@ -424,7 +424,7 @@ body{
    MOBILE LAYOUT OVERRIDE (Quads)
    Put this at the VERY BOTTOM of style.css
 ========================= */
-@media (max-width: 720px){
+@media (max-width: 620px){
 
   body{
     overflow: auto;
