@@ -187,15 +187,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   nextLevelBtn.addEventListener("click", () => {
-    if (level < 6) {
+    if (level < 5) {
       level++;
       levelDisplay.textContent = level;
       generateCards(level);
       startTimer();
       showScreen(gameScreen);
     } else {
-
-      winMessage.innerText = "All three levels completed";
+      winMessage.innerText = "All levels completed";
       nextLevelBtn.style.display = "none";
       showScreen(winScreen);
     }
