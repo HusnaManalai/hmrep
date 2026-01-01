@@ -2,10 +2,8 @@
 
 
 .game-section1 {
-  min-height: 100svh;
   height: auto;
   width: 100%;
-  margin-top: 50px ;
   background-position: center;
   background-repeat: no-repeat;
   display: flex;
@@ -14,6 +12,7 @@
   justify-content: flex-start;
   text-align: center;
   padding: 60px 8px 12px;
+  overscroll-behavior: none;
 }
 
 
@@ -34,6 +33,7 @@
   align-items: center;
   gap: clamp(12px, 4vw, 40px);
   padding: 0;
+  overscroll-behavior: none;
 }
 
 .hidden {
@@ -163,7 +163,6 @@ button:hover {
 
 @media (max-width: 480px) {
   .game-section1 {
-    margin-top: 50px;
     padding: 60px 8px 12px;
   }
   .game-info h2 {
