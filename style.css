@@ -313,21 +313,30 @@ body{
 }
 
 #found-scroll{
+  width: 100%;
+  box-sizing: border-box;
+
   display: grid;
-  grid-template-columns: repeat(3, max-content);
-  justify-content: center;
-  justify-items: center;
-  gap: 2px;
+
+  /* responsive columns that NEVER overflow */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 6px;
   align-content: start;
-  overflow: hidden;
-  padding-top: 4px;
+  justify-items: center;
+
+  /* if it gets too tall on phone, it scrolls instead of overflowing */
+  overflow: auto;
+
+  padding: 6px 8px 10px;
 }
 
+
 #found-scroll.final-7{ 
-  grid-template-columns: repeat(3, max-content); 
+  grid-template-columns: repeat(3, minmax(0, 1fr)); 
 }
 #found-scroll.final-5{ 
-  grid-template-columns: repeat(2, max-content); 
+  grid-template-columns: repeat(2, minmax(0, 1fr)); 
 }
 
 #found-scroll.final-7 .found-quad:last-child{
@@ -341,19 +350,29 @@ body{
 }
 
 .found-quad{
-  display: grid;
-  grid-template-columns: repeat(4, auto);
-  gap: 0px;
-  background: #753eb7;
-  border-radius: 5px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 
+  display: grid;
+
+  /* 4 tiny cards across, but they shrink to fit */
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 4px;
+
+  background: #753eb7;
+  border-radius: 10px;
+  padding: 6px;
 }
+
 
 #found .card{
-  width: 40px;
-  height: 30px;
-  border-radius: 5px;
+  width: 100%;      /* fill the grid cell */
+  height: auto;
+  aspect-ratio: 4 / 3; /* keeps tiny card shape consistent */
+  border-radius: 6px;
 }
+
 
 #found .card-inner{
   padding: 5px;
