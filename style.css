@@ -358,9 +358,7 @@ body{
 
   /* 4 tiny cards across, but they shrink to fit */
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 4px;
-
-  background: #753eb7;
+  gap: 6px;
   border-radius: 10px;
   padding: 6px;
 }
@@ -376,10 +374,10 @@ body{
 
 #found .card-inner{
   padding: 5px;
-  gap: 4px;
+  gap: 2px;
 }
 #found .card-inner .icon{
-  font-size: clamp(2px, 2.6vh, 11px);
+  font-size: clamp(3px, 2.6vh, 12px);
 }
 
 /* =========================
