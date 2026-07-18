@@ -4,7 +4,7 @@ function generateStars() {
 
   starsContainer.innerHTML = ""; // prevent duplicates
 
-  const density = 0.12;
+  const density = 0.30;
   const numStars = Math.floor(
     (window.innerWidth * window.innerHeight) / 1000 * density
   );
