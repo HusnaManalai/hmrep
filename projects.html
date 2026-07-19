@@ -18,94 +18,129 @@
 </head>
 
 <body>
+    <main class="page-shell">
 
     <div id="site-navigation"></div>
 
-    <main class="page-content">
+    <header class="page-content">
+        <div class="page-header">
+            <h1 class="title">
+                <br>
+                <a>Projects</a>
+            </h1>
+        </div>
+    </header>
 
-        <header class="page-header">
-            <h1>Projects</h1>
+    <div class="page-content">
 
-            <p>
-                A collection of programming projects I've built throughout my
-                undergraduate studies and in my spare time.
-            </p>
-        </header>
+    <section class="projects-grid">
 
-        <section class="projects-section">
+        <!-- Math Projects -->
+        <div class="project-column">
 
-            <article class="project-card">
-                <h2>Daily Quads</h2>
-                <p>
-                    A daily word puzzle game inspired by Quordle.
-                </p>
-                <a href="quads.html">View Project →</a>
-            </article>
+            <h2 class="column-title">Math Projects</h2>
 
             <article class="project-card">
-                <h2>Recipe Recommendation Engine</h2>
-                <p>
-                    A recommendation system that suggests recipes based on user
-                    preferences and ingredients.
-                </p>
-                <a href="https://github.com/HusnaManalai/Smart-Recipe-Recommendation-Engine"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    GitHub →
-                </a>
-            </article>
 
-            <article class="project-card">
-                <h2>Predictive Analytics for Bike Rental Demand</h2>
-                <p>
-                    Machine learning models for predicting bike rental demand
-                    from historical data.
-                </p>
-                <a href="https://github.com/HusnaManalai/Predictive-Analytics-for-Bike-Rental-Demand"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    GitHub →
-                </a>
+                <div class="project-info">
+                    <h3>Quandles & Sharac(n)</h3>
+
+                    <p>
+                        Undergraduate research exploring quandles, knot invariants,
+                        and the Sharac(n) operation.
+                    </p>
+
+                    <a href="#">Read More →</a>
+                </div>
+
+                <img
+                    src="images/knot.png"
+                    alt="Knot diagram"
+                    class="project-image">
+
             </article>
 
             <article class="project-card">
-                <h2>Workspace</h2>
-                <p>
-                    A personal productivity workspace featuring a timer,
-                    to-do list, and task management tools.
-                </p>
-                <a href="workspace.html">
-                    Open →
-                </a>
+
+                <div class="project-info">
+                    <h3>ANOVA Analysis</h3>
+
+                    <p>
+                        Statistical analysis comparing multiple groups using
+                        one-way ANOVA.
+                    </p>
+
+                    <a href="#">Read More →</a>
+                </div>
+
+                <img
+                    src="images/anova.png"
+                    alt=""
+                    class="project-image">
+
             </article>
+
+        </div>
+
+
+        <!-- Programming Projects -->
+
+        <div class="project-column">
+
+            <h2 class="column-title">Programming Projects</h2>
 
             <article class="project-card">
-                <h2>A Projective Set Game</h2>
-                <p>
-                    A Java implementation of a pattern-matching card game.
-                </p>
-                <a href="https://github.com/HusnaManalai/Kitten-Kaboodle-Game-Java"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    GitHub →
-                </a>
+
+                <div class="project-info">
+
+                    <h3>Daily Quads</h3>
+
+                    <p>
+                        A daily word puzzle game inspired by Quordle.
+                    </p>
+
+                    <a href="quads.html">View Project →</a>
+
+                </div>
+
+                <img
+                    src="images/quads.png"
+                    alt=""
+                    class="project-image">
+
             </article>
 
 
-             <article class="project-card">
-                <h2>Stary Screen</h2>
-                <p>
-                    Just a screen with stars
-                </p>
-                <a href="games.html">
-                    Link
-                </a>
+            <article class="project-card">
+
+                <div class="project-info">
+
+                    <h3>Workspace</h3>
+
+                    <p>
+                        Productivity workspace featuring timers and task
+                        management.
+                    </p>
+
+                    <a href="workspace.html">
+                        Open →
+                    </a>
+
+                </div>
+
+                <img
+                    src="images/workspace.png"
+                    alt=""
+                    class="project-image">
+
             </article>
 
-        </section>
+        </div>
 
-    </main>
+    </section>
+</div>
 
+</main>
     <script src="navigation.js"></script>
     <script src="script.js"></script>
 
