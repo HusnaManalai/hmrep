@@ -12,9 +12,11 @@ const navigation = `
     <nav class="main-nav" aria-label="Main navigation">
         <a href="${prefix}index.html">Home</a>
         <a href="${prefix}research.html">Research Notes</a>
-        <a href="${prefix}resources.html">Resources</a>
-        <a href="${prefix}notes.html">Notes</a>
         <a href="${prefix}projects.html">Projects</a>
+        <a href="${prefix}notes.html">Notes</a>
+        <a href="${prefix}resources.html">Resources</a>
+        
+        
     </nav>
 
 </header>
