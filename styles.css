@@ -215,16 +215,6 @@ li {
   }
 }
 
-/* -----------------------------------
-   HOMEPAGE SPECIFIC
-  ----------------------------------- */
-.current-focus {
-    border: 1px solid #d6d6d6;
-    border-radius: 8px;
-    padding: 1.1rem;
-    margin-top: 0.1rem;
-}
-
 
 
 /* -----------------------------------
@@ -235,18 +225,30 @@ li {
     margin-top: 1rem;
 }
 
+.research-grid {
+    width: 100%;
+    margin-top: 1rem;
 
-
-.research-card {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 220px;
-    gap: 2rem;
-    align-items: center;
-    border: 1px solid #d8d8d8;
-    border-radius: 8px;
-
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
+.research-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+
+    width: 100%;
+
+    border: 1px solid #d8d8d8;
+    border-radius: 8px;
+}
+
+.research-card-content {
+    flex: 1;
+}
 
 
 .research-card-content h3 {
@@ -267,6 +269,7 @@ li {
     display: flex;
     justify-content: center ;
     align-items: center;
+    margin-right: 4.5rem;
 }
 
 .research-card-image img {
