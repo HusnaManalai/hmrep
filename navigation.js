@@ -1,8 +1,7 @@
 const isSubpage =
     window.location.pathname.includes("/research/") ||
     window.location.pathname.includes("/notes/") ||
-    window.location.pathname.includes("/projects/") ||
-    window.location.pathname.includes("/resources/");
+    window.location.pathname.includes("/projects/") 
 
 const prefix = isSubpage ? "../" : "";
 
@@ -14,7 +13,6 @@ const navigation = `
         <a href="${prefix}research.html">Research Notes</a>
         <a href="${prefix}projects.html">Projects</a>
         <a href="${prefix}notes.html">Notes</a>
-        <a href="${prefix}resources.html">Resources</a>
         
         
     </nav>
