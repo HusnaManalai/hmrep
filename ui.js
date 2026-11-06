@@ -4,17 +4,7 @@ import { DIM, daily } from './generate.mjs'
 const CARDS_SELECTED = new Set();
 function onCardClicked(cardNum, cardEl) {
   cardEl.classList.toggle("selected");
-  // animate icons once on click
-  cardEl.querySelectorAll(".icon").forEach(i => {
-    i.classList.remove("fa-bounce");   // reset if already there
-    //void i.offsetWidth;              // force reflow so it can restart
-    requestAnimationFrame(() => i.classList.add("fa-bounce"));
-  });
 
-  // remove it so it doesn’t keep looping
-  setTimeout(() => {
-    cardEl.querySelectorAll(".icon").forEach(i => i.classList.remove("fa-bounce"));
-  }, 700);
 
   if (CARDS_SELECTED.delete(cardNum))
     return;

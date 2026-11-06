@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
 /* =========================
    Base
 ========================= */
@@ -7,22 +8,26 @@ html {
 * { 
   -webkit-tap-highlight-color: transparent;
   overscroll-behavior: none;
+
 }
 
+
+
 body{
-  margin: 0;
-  overflow: hidden;
-  user-select: none;
-  font-family: "Impact", fantasy;
-  color: #FFFAF0;
-  font-size: clamp(18px, 2vw, 22px);
-  overscroll-behavior: none;
+margin: 0;
+overflow: hidden;
+user-select: none;
+font-family: 'Roboto', sans-serif;
+font-weight: 100;
+color: #000;
+font-size: clamp(18px, 2vw, 22px);
+overscroll-behavior: none;
 }
 
 .viewport{
   position: fixed;
   inset: 0;
-  background: #131a24;
+  background: #FFF;
   overflow: hidden;
   overscroll-behavior: none;
 }
@@ -66,14 +71,15 @@ body{
   text-align: center;
   font-size: clamp(34px, 4vw, 54px); /* BIGGER title */
   letter-spacing: 1px;
+  font-weight: 100;
 }
 
 .title a {
-  color: white;
+  color: black;
   text-decoration: none;
   transition: color 0.3s ease, transform 0.3s ease;
   font-size: clamp(32px, 2vw, 52px);
-  font-size: ;
+
 }
 
 .title a:hover {
@@ -95,7 +101,7 @@ body{
   align-items: center;
   grid-template-columns: 1fr auto 1fr; /* left / center / right */
   gap: 16px;
-  background: #2a3b52;
+  background: #B2BEB5;
   border-radius: 9px;
 }
 .time{
@@ -126,14 +132,17 @@ body{
   font-family: inherit;
   font-size: clamp(18px, 2.2vw, 26px);
   border-radius: 9px;
-  border: 1px solid #2a3b52;
-  background: #2a3b52;
+  border: 1px solid #B2BEB5;
+  background: #B2BEB5;
   cursor: pointer;
-  color: #FFFAF0;
+  color: #000;
+  font-weight: 100;
 }
 #reset-all:hover{
   background: #ff6;
   color: #000;
+
+
 }
 
 #congrats{
@@ -182,16 +191,16 @@ body{
   position: relative;
   border-radius: 12px;
 
-  --gold-rad: 0.6vh;
+  --gold-rad: 0.3vh;
   --hover-scale: 1.025;
   --transition-time: 0.15s;
   --border-time: 0.08s;
   --scale: 1em;
 
   font-size: var(--scale);
-  box-shadow: 4px 4px 4px 4px rgba(0,0,0,0.25);
+
   contain: strict;
-  background: #FFFAF0;
+  background: #B2BEB5;
 
   touch-action: manipulation;
   outline: none;
@@ -218,7 +227,7 @@ body{
 .card-inner{
   z-index: 2;
   border-radius: inherit;
-  background: #FFF7E9;
+  background: #FFF;
 
   position: absolute;
   top: var(--gold-rad);
@@ -226,7 +235,7 @@ body{
   right: var(--gold-rad);
   bottom: var(--gold-rad);
 
-  padding: 12px;
+  padding: 13px;
   display: grid;
   grid-template-columns: repeat(2, auto);
   grid-template-rows: repeat(2, auto);
@@ -298,7 +307,7 @@ body{
 ========================= */
 #found{
   grid-area: quads;
-  background: #1c2736;
+  background: #B2BEB5;
   border-radius: 22px;
   min-width: 0;
 }
@@ -307,8 +316,9 @@ body{
   width: 100%;
   text-align: center;
   margin: 0px 0 1px 0;
-  background: #2a3b52;
+  background: #B2BEB5;
   border-radius: 9px;
+  font-weight: 100;
 
 }
 
@@ -321,7 +331,7 @@ body{
   /* responsive columns that NEVER overflow */
   grid-template-columns: repeat(3, minmax(0, 1fr));
 
-  gap: 6px;
+  gap: 13px;
   align-content: start;
   justify-items: center;
 
@@ -360,7 +370,7 @@ body{
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 6px;
   border-radius: 10px;
-  padding: 6px;
+  padding: 12px;
 }
 
 
@@ -568,4 +578,5 @@ body{
     font-size: clamp(0.6px, 2.5vh, 9.1px);
   } 
 }
+
 
